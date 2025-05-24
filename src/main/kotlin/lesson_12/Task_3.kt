@@ -19,14 +19,11 @@ fun main() {
         _nightTemperature = 278,
     )
     println("${thursdayWeather.dayTimeTemperature}  ${thursdayWeather.nightTemperature}")
-
 }
 
-
-class WeatherDailys(_dayTimeTemperature: Int, _nightTemperature: Int,) {
+class WeatherDailys(_dayTimeTemperature: Int, _nightTemperature: Int) {
     val dayTimeTemperature = _dayTimeTemperature - KELVIN_TO_CELSIUM
     var nightTemperature = _nightTemperature - KELVIN_TO_CELSIUM
-
 }
 
 const val KELVIN_TO_CELSIUM = 275
