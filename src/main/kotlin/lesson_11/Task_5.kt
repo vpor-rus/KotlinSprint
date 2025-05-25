@@ -63,7 +63,7 @@ class Forum() {
     val memberForum = MemberForum()
     val messageForum = MessageForum()
 
-    val listMemberForum = mutableListOf("")
+    val listMemberForum = mutableListOf<String>()
 
     fun createNewUser() {
         print("Введите имя нового пользователя: ")
@@ -73,25 +73,25 @@ class Forum() {
         print("В список добавлен пользователь ${memberForum.userName} ID номер = ${memberForum.userId}\n")
     }
 
-    val listAutorIdForum = mutableListOf<Int>()
+    val listAutorIdForum = mutableListOf<String>()
     val listMessageForum = mutableListOf<String>()
 
     fun createNewMessage(userId: Int) {
+            val numberId = userId - 1
             if (userId != 0) {
             print("Пользователь с ID=${userId} введите сообщение: ")
             messageForum.message = readln()
         }
-        listAutorIdForum.add(memberForum.userId)
+        listAutorIdForum.add(listMemberForum[numberId])
         listMessageForum.add(messageForum.message)
     }
 
     fun printThread() {
-        for (i in 0..(listMessageForum.size)) {
+        for (i in 0 until listMessageForum.size) {
             println(
                 "автор : ${listAutorIdForum[i]}\n" + "сообщение : ${listMessageForum[i]}"
             )
         }
-        return
     }
 }
 
