@@ -17,7 +17,6 @@ import kotlin.random.Random
 Выведи результаты в консоль.*/
 
 fun main() {
-
     for (i in 1..30) {
         val dailyForecast = diurnalWeather()
 
@@ -29,7 +28,9 @@ class diurnalWeather(
     val dayTemperature: Int = Random.nextInt(270, 311),
     val nightTempersture: Int = Random.nextInt(260, 291),
     val precipitation: Int = Random.nextInt(0, 2),
-):
+    val weatherAtDay: MutableList = mutableListOf(dayTemperature, nightTempersture, precipitation),
+    )
+}
 
 fun KelvinToCelcium(temperatureToKelvin: Int): Int {
     return temperatureToKelvin - KELVIN_TO_CELSIUM
