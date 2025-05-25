@@ -87,7 +87,7 @@ class Forum(){
     fun printThread()
     {
         for (i in 1 .. (listMessageForum.size)){
-            println("автор : \n" +
+            println("автор :${listMemberForum.indexOf(listMessageForum[i] + 1)} \n" +
                     "сообщение : ${listMessageForum[i]}")
         }
     }
