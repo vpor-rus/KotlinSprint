@@ -60,14 +60,13 @@ class MemberForum {
         this.userName = _userName
         return userName
     }
-
 }
 
 class Forum(){
     val memberForum = MemberForum()
     val messageForum = MessageForum()
 
-    val listMemberForum = mutableListOf<String>("")
+    val listMemberForum = mutableListOf("")
 
     fun createNewUser(){
         print("Введите имя нового пользователя: ")
@@ -77,7 +76,9 @@ class Forum(){
         print("В список добавлен пользователь ${memberForum.userName} ID номер = ${memberForum.userId}")
     }
 
-    fun createNewMessage()
+   /* fun createNewMessage() {
+        print("Введите сообщение")
+    }*/
 
 }
 
