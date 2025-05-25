@@ -81,7 +81,7 @@ class Forum() {
             print("Пользователь с ID=${userId} введите сообщение: ")
             messageForum.message = readln()
         }
-        listAutorIdForum.add(memberForum.userName)
+        listAutorIdForum.add(memberForum.userId)
         listMessageForum.add(messageForum.message)
     }
 
