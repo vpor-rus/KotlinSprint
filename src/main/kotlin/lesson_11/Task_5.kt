@@ -22,16 +22,12 @@ fun main() {
     val forum = Forum()
 
     forum.createNewUser()
-    println(forum.listMemberForum[0])
-    println(forum.memberForum.userId)
+    forum.createNewMessage(1)
+    forum.createNewUser()
+    forum.createNewMessage(2)
+    print(forum.listMessageForum.map { it }.toString())
 }
 
-/*Разрешите я вам буду на проверку отправлять поэтапно
-* здесь создал два класса "сообщения форума" и "участники форума"  с помощью паттерна строителя.
-*
-* в классе Forum в конструктор входящими данным сделал созданные
-* ранее классы "сообщения форума" и "участники форума" А ТАК ВООБЩЕ МОЖНО? ИЛИ КАК ТО ПО ДРУГОМУ НУЖНО ИНИЦИАЛИЗИРОВАТЬ?
-* Так же попытался реализовать функцию createNewUser*/
 class MessageForum {
     var autorId = 0
     var message = ""
@@ -76,9 +72,19 @@ class Forum(){
         print("В список добавлен пользователь ${memberForum.userName} ID номер = ${memberForum.userId}")
     }
 
-   /* fun createNewMessage() {
-        print("Введите сообщение")
-    }*/
+    val listMessageForum = mutableMapOf<Int, String>()
 
+   fun createNewMessage(userId: Int) {
+        if (userId != 0) {
+            print("Пользователь с ID=${userId} введите сообщение: ")
+            messageForum.message = readln()
+
+        }
+       listMessageForum.put(userId, messageForum.message)
+   }
+
+    fun printThread(listMessageForum: MessageForum) {
+        print(listMessageForum.toString())
+    }
 }
 
