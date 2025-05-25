@@ -25,10 +25,8 @@ fun main() {
     forum.createNewMessage(1)
     forum.createNewUser()
     forum.createNewMessage(2)
-    for (i in 1 .. (forum.listMessageForum.size)){
-        println("автор : ${forum.listMemberForum.indexOf(forum.listMessageForum[i])}\n" +
-                "сообщение : ${forum.listMessageForum[i]}")
-    }
+    forum.printThread()
+
 }
 
 class MessageForum {
@@ -86,8 +84,12 @@ class Forum(){
        listMessageForum.put(userId, messageForum.message)
    }
 
-    fun printThread(listMessageForum: MessageForum) {
-        print(listMessageForum.toString())
+    fun printThread()
+    {
+        for (i in 1 .. (listMessageForum.size)){
+            println("автор : \n" +
+                    "сообщение : ${listMessageForum[i]}")
+        }
     }
 }
 
