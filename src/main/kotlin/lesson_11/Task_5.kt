@@ -19,6 +19,8 @@ package org.example.lesson_11
 каждого пользователя.*/
 
 fun main() {
+    val forum = Forum()
+
 }
 
 /*Разрешите я вам буду на проверку отправлять поэтапно
@@ -31,12 +33,12 @@ class MessageForum {
     var autorId = 0
     var message = ""
 
-    fun setUserId(_autorId: Int): MessageForum {
+    fun setUserId(_autorId: Int): Int {
         this.autorId = _autorId
         return autorId
     }
 
-    fun setUserName(_message: String): MessageForum {
+    fun setUserName(_message: String): String {
         this.message = _message
         return message
     }
@@ -46,19 +48,23 @@ class MemberForum {
     var userId = 0
     var userName = ""
 
-    fun setUserId(_userId: Int): MemberForum {
+    fun setUserId(_userId: Int): Int {
         this.userId = _userId
         return userId
     }
 
-    fun setuserName(_userName: String): MemberForum{
+    fun setuserName(_userName: String): String {
         this.userName = _userName
         return userName
     }
 
 }
 
-class Forum(memberForum: MemberForum, messageForum: MessageForum){
+class Forum(){
+    val memberForum = MemberForum()
+    val messageForum = MessageForum()
+
+    fun
 
 }
 
