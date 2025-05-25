@@ -18,30 +18,25 @@ import kotlin.random.Random
 
 fun main() {
 
-    var listForecastMonth = mutableListOf<Int>(0, 0, 0)
-    val
+    val listForecastMonth = mutableListOf(0, 0, 0)
+
     for (i in 1..30) {
         val dailyForecast = diurnalWeather()
-        te
-
+        listForecastMonth[0] = listForecastMonth[0] + dailyForecast.dayTemperature
+        listForecastMonth[1] = listForecastMonth[1] + dailyForecast.nightPrecipitation
+        listForecastMonth[2] = listForecastMonth[2] + dailyForecast.precipitation
     }
-
     println(listForecastMonth.joinToString())
-
-
-
 }
 
 class diurnalWeather(
-    val dayTemperature: Int = Random.nextInt(270, 310),
-    val nightPrecipitation: Int = Random.nextInt(260, 290),
-    val precipitation: Int = Random.nextInt(0,1),
-    ) {
-
-}
+    val dayTemperature: Int = Random.nextInt(270, 311),
+    val nightPrecipitation: Int = Random.nextInt(260, 291),
+    val precipitation: Int = Random.nextInt(0, 2),
+)
 
 fun KelvinToCelcium(temperatureToKelvin: Int): Int {
     return temperatureToKelvin - KELVIN_TO_CELSIUM
 }
 
-const val KELVIN_TO_CELSIUM  = 275
+const val KELVIN_TO_CELSIUM = 275
