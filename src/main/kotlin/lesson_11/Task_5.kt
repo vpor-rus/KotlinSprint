@@ -25,7 +25,10 @@ fun main() {
     forum.createNewMessage(1)
     forum.createNewUser()
     forum.createNewMessage(2)
-    print(forum.listMessageForum.map { it }.toString())
+    for (i in 1 .. (forum.listMessageForum.size)){
+        println("автор : ${forum.listMemberForum.indexOf(forum.listMessageForum[i])}\n" +
+                "сообщение : ${forum.listMessageForum[i]}")
+    }
 }
 
 class MessageForum {
@@ -69,7 +72,7 @@ class Forum(){
         memberForum.userName = readln()
         listMemberForum.add(memberForum.userName)
         memberForum.userId = listMemberForum.indexOf(memberForum.userName)
-        print("В список добавлен пользователь ${memberForum.userName} ID номер = ${memberForum.userId}")
+        print("В список добавлен пользователь ${memberForum.userName} ID номер = ${memberForum.userId}\n")
     }
 
     val listMessageForum = mutableMapOf<Int, String>()
