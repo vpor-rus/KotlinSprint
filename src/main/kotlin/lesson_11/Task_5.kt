@@ -21,14 +21,17 @@ package org.example.lesson_11
 fun main() {
     val forum = Forum()
 
+    forum.createNewUser()
+    println(forum.listMemberForum[0])
+    println(forum.memberForum.userId)
 }
 
 /*Разрешите я вам буду на проверку отправлять поэтапно
 * здесь создал два класса "сообщения форума" и "участники форума"  с помощью паттерна строителя.
 *
 * в классе Forum в конструктор входящими данным сделал созданные
-* ранее классы "сообщения форума" и "участники форума" А ТАК ВООБЩЕ МОЖНО? ИЛИ КАК ТО ПО ДРУГОМУ НУЖНО ИНИЦИАЛИЗИРОВАТЬ? */
-
+* ранее классы "сообщения форума" и "участники форума" А ТАК ВООБЩЕ МОЖНО? ИЛИ КАК ТО ПО ДРУГОМУ НУЖНО ИНИЦИАЛИЗИРОВАТЬ?
+* Так же попытался реализовать функцию createNewUser*/
 class MessageForum {
     var autorId = 0
     var message = ""
@@ -64,7 +67,17 @@ class Forum(){
     val memberForum = MemberForum()
     val messageForum = MessageForum()
 
-    fun
+    val listMemberForum = mutableListOf<String>("")
+
+    fun createNewUser(){
+        print("Введите имя нового пользователя: ")
+        memberForum.userName = readln()
+        listMemberForum.add(memberForum.userName)
+        memberForum.userId = listMemberForum.indexOf(memberForum.userName)
+        print("В список добавлен пользователь ${memberForum.userName} ID номер = ${memberForum.userId}")
+    }
+
+    fun createNewMessage()
 
 }
 
