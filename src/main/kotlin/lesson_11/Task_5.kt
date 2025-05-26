@@ -19,51 +19,12 @@ package org.example.lesson_11
 каждого пользователя.*/
 
 fun main() {
-    val forum = Forum()
-
-    forum.createNewUser()
-    forum.createNewMessage()
-    forum.createNewUser()
-    forum.createNewMessage()
-    forum.printThread()
-
 }
 
-class MessageForum() {
-    var autorId = 0
-    var message = ""
+class MessageForum()
 
-    fun setAutorId(_autorId: Int): MessageForum {
-        this.autorId = _autorId
-        return this
-    }
+class MemberForum()
 
-    fun setMessage(_message: String): MessageForum {
-        this.message = _message
-        return this
-    }
-}
+class Forum()
 
-class MemberForum() {
-    var userId = 0
-    var userName = ""
-
-    fun setUserId(_userId: Int): MemberForum {
-        this.userId = _userId
-        return this
-    }
-
-    fun setUserName(_userName: String): MemberForum {
-        this.userName = _userName
-        return this
-    }
-}
-
-class Forum {
-    fun createNewUser () {}
-
-    fun createNewMessage() {}
-
-    fun printThread() {}
-}
 
