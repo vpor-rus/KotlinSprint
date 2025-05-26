@@ -22,75 +22,48 @@ fun main() {
     val forum = Forum()
 
     forum.createNewUser()
-    forum.createNewMessage(1)
+    forum.createNewMessage()
     forum.createNewUser()
-    forum.createNewMessage(2)
+    forum.createNewMessage()
     forum.printThread()
 
 }
 
-class MessageForum {
+class MessageForum() {
     var autorId = 0
     var message = ""
 
-    fun setUserId(_autorId: Int): Int {
+    fun setAutorId(_autorId: Int): MessageForum {
         this.autorId = _autorId
-        return autorId
+        return this
     }
 
-    fun setUserName(_message: String): String {
+    fun setMessage(_message: String): MessageForum {
         this.message = _message
-        return message
+        return this
     }
 }
 
-class MemberForum {
+class MemberForum() {
     var userId = 0
     var userName = ""
 
-    fun setUserId(_userId: Int): Int {
+    fun setUserId(_userId: Int): MemberForum {
         this.userId = _userId
-        return userId
+        return this
     }
 
-    fun setuserName(_userName: String): String {
+    fun setUserName(_userName: String): MemberForum {
         this.userName = _userName
-        return userName
+        return this
     }
 }
 
-class Forum() {
+class Forum {
+    fun createNewUser () {}
 
-    val listMemberForum = mutableListOf<String>()
+    fun createNewMessage() {}
 
-    fun createNewUser(userName: String, userId: Int) {
-
-        print("Введите имя нового пользователя: ")
-        userName = readln()
-        listMemberForum.add(userName)
-        userId = listMemberForum.indexOf(userName)
-        print("В список добавлен пользователь ${userName} ID номер = ${userId}\n")
-    }
-
-    val listAutorIdForum = mutableListOf<String>()
-    val listMessageForum = mutableListOf<String>()
-
-    fun createNewMessage(userId: MessageForum, message: MessageForum) {
-            val numberId = userId - 1
-            if (userId != 0) {
-            print("Пользователь с ID=${userId} введите сообщение: ")
-            message = readln()
-        }
-        listAutorIdForum.add(listMemberForum[numberId])
-        listMessageForum.add(message)
-    }
-
-    fun printThread() {
-        for (i in 0 until listMessageForum.size) {
-            println(
-                "автор : ${listAutorIdForum[i]}\n" + "сообщение : ${listMessageForum[i]}"
-            )
-        }
-    }
+    fun printThread() {}
 }
 
