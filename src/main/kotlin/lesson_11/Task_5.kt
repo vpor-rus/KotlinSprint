@@ -29,7 +29,7 @@ fun main() {
 class Forum(
     var auturIdCounter: Int = 0,
     var userIdCounter: Int = 0,
-    var messageForum: MutableList<MessageForum> = mutableListOf(),
+    var messagesForum: MutableList<MessageForum> = mutableListOf(),
     var usersName: MutableList<MemberForum> = mutableListOf(),
 ) {
     fun createNewUser(
