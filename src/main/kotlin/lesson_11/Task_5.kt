@@ -20,23 +20,29 @@ package org.example.lesson_11
 
 fun main() {
     val forum = Forum()
-    forum.userName
+
 
 }
 
 class Forum(
     var auturId: Int = 0,
     var userId: Int = 0,
-    var message: String,
-    var userName: String,
+    var messageForum: MutableList<MessageForum> = mutableListOf(),
+    var userName: MutableList<MemberForum> = mutableListOf(),
 ) {
+    fun createNewUser(
+        userName: MemberForum,
+        userId: MemberForum,
+    ) {
 
+
+    }
 
 }
 
 class MemberForum(
-    userName: Forum,
-    userId: Forum,
+    userName: String,
+    userId: Int,
 ) {
     var userName = userName
     fun setUserName(userName: String) = apply {
@@ -49,7 +55,7 @@ class MessageForum(
     autorId: Forum,
     message: String,
 ) {
- val message = message
+    var message = message
     fun setUserName(userName: String) = apply {
         this.message = message
     }
