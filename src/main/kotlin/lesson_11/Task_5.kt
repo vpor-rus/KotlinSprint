@@ -19,12 +19,42 @@ package org.example.lesson_11
 каждого пользователя.*/
 
 fun main() {
+    val forum = Forum()
+    forum.userName
+
 }
 
-class MessageForum()
+class Forum(
+    var auturId: Int = 0,
+    var userId: Int = 0,
+    var message: String,
+    var userName: String,
+) {
 
-class MemberForum()
 
-class Forum()
+}
+
+class MemberForum(
+    userName: Forum,
+    userId: Forum,
+) {
+    var userName = userName
+    fun setUserName(userName: String) = apply {
+        this.userName = userName
+    }
+
+}
+
+class MessageForum(
+    autorId: Forum,
+    message: String,
+) {
+ val message = message
+    fun setUserName(userName: String) = apply {
+        this.message = message
+    }
+}
+
+
 
 
