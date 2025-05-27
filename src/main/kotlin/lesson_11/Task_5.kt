@@ -20,22 +20,28 @@ package org.example.lesson_11
 
 fun main() {
     val forum = Forum()
+    forum.createNewUser("Телепузик")
+    forum.createNewUser("радиопузик")
 
 
 }
 
 class Forum(
-    var auturId: Int = 0,
-    var userId: Int = 0,
+    var auturIdCounter: Int = 0,
+    var userIdCounter: Int = 0,
     var messageForum: MutableList<MessageForum> = mutableListOf(),
-    var userName: MutableList<MemberForum> = mutableListOf(),
+    var usersName: MutableList<MemberForum> = mutableListOf(),
 ) {
     fun createNewUser(
-        userName: MemberForum,
-        userId: MemberForum,
-    ) {
-
-
+        userName: String,
+        ): MemberForum {
+val userName = MemberForum(
+    userName = userName,
+    userId = userIdCounter
+)
+     usersName.add(userName)
+        userIdCounter++
+        return userName
     }
 
 }
