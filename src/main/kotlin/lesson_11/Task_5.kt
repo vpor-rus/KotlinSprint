@@ -59,21 +59,20 @@ class Forum(
         message: String,
     ): MessageForum {
 
-        val autorid = userNameList[authorId]
-        // честно скажу что подкапотную часть
-        // find прочитал поверхностно, слизал из вашего примера.
+        val autorid = authorId
 
         val message = MessageForum(
-            message = message, authorId = autorid
+            message = message, authorId =autorid,
         )
         messageList.add(message)
         return message
     }
 
     fun printThread() {
-        for (i in 1..(messageList.size)) {
+        for (i in 0 until (messageList.size)) {
             println(
-                "автор : \n" + "сообщение : ${messageList[i]}"
+                "автор : \n" +
+                "сообщение : ${messageList[i]}"
             )
         }
 
@@ -86,7 +85,7 @@ class Forum(
     )
 
     class MessageForum(
-        authorId: MemberForum?,
+        authorId: Int,
         message: String,
     )
 
