@@ -26,22 +26,20 @@ fun main() {
     forum.createNewUser("радиопузик")
     println(forum.userNameList.toString())
     forum.createNewMessage(
-        authorId = 1,
-        message = "привет"
+        authorId = 1, message = "привет"
     )
     forum.createNewMessage(
-        authorId = 2,
-        message = "пока"
+        authorId = 2, message = "пока"
     )
     forum.printThread()
 
 }
 
 class Forum(
-     var userIdCounter: Int = 0,
-     var userNameList: MutableList<MemberForum> = mutableListOf(),
-     var autorId: Int = 0,
-     var messageList: MutableList<MessageForum> = mutableListOf()
+    var userIdCounter: Int = 0,
+    var userNameList: MutableList<MemberForum> = mutableListOf(),
+    var autorId: Int = 0,
+    var messageList: MutableList<MessageForum> = mutableListOf(),
 ) {
     fun createNewUser(
         username: String,
@@ -59,61 +57,38 @@ class Forum(
     fun createNewMessage(
         authorId: Int,
         message: String,
-    ): MessageForum{
+    ): MessageForum {
 
-        val autorid = userNameList.find { it.userId == authorId }?: 0// честно скажу что подкапотную часть
+        val autorid = userNameList[authorId]
+        // честно скажу что подкапотную часть
         // find прочитал поверхностно, слизал из вашего примера.
 
         val message = MessageForum(
-            message = message,
-            authorId = autorid as Int,
+            message = message, authorId = autorid
         )
         messageList.add(message)
         return message
     }
 
     fun printThread() {
-        for (i in 1 .. (messageList.size)){
-            println("автор : \n" +
-                    "сообщение : ${messageList[i]}")
-    }
+        for (i in 1..(messageList.size)) {
+            println(
+                "автор : \n" + "сообщение : ${messageList[i]}"
+            )
+        }
 
-}
-
-
-class MemberForum(
-    userId: Int,
-    userName: String,
-){
-    var userId = userId
-    var userName = userName
-
-    fun setUserId (userId: Int) = apply {
-        this.userId = userId
-    }
-
-    fun setUserName (userName: String) = apply {
-        this.userName = userName
     }
 }
+
+    class MemberForum(
+        userId: Int,
+        userName: String,
+    )
 
     class MessageForum(
-        authorId: Int,
+        authorId: MemberForum?,
         message: String,
-    ) {
-    var authorId = authorId
-    var message = message
-
-        fun setAutorId(authorId: Int) = apply {
-            this.authorId = authorId
-        }
-
-        fun setMessage(message: String) = apply {
-            this.message = message
-        }
-    }
-}
-
+    )
 
 
 
