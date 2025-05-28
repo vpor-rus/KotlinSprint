@@ -1,5 +1,7 @@
 package org.example.lesson_11
 
+import kotlin.collections.find
+
 /*Реализовать класс работы форума (Forum). Для реализации создай дополнительные классы для сущностей
 “Член форума” (с полями userId и userName) и “Сообщение форума” (с полями authorId и message).
 
@@ -20,50 +22,95 @@ package org.example.lesson_11
 
 fun main() {
     val forum = Forum()
-    forum.createNewUser("Телепузик")
+    forum.createNewUser("телепузик")
     forum.createNewUser("радиопузик")
-
+    println(forum.userNameList.toString())
+    forum.createNewMessage(
+        authorId = 1,
+        message = "привет"
+    )
+    forum.createNewMessage(
+        authorId = 2,
+        message = "пока"
+    )
+    forum.printThread()
 
 }
 
 class Forum(
-    var auturIdCounter: Int = 0,
-    var userIdCounter: Int = 0,
-    var messagesForum: MutableList<MessageForum> = mutableListOf(),
-    var usersName: MutableList<MemberForum> = mutableListOf(),
+     var userIdCounter: Int = 0,
+     var userNameList: MutableList<MemberForum> = mutableListOf(),
+     var autorId: Int = 0,
+     var messageList: MutableList<MessageForum> = mutableListOf()
 ) {
     fun createNewUser(
-        userName: String,
+        username: String,
+
         ): MemberForum {
-val userName = MemberForum(
-    userName = userName,
-    userId = userIdCounter
-)
-     usersName.add(userName)
+        val createMemberInForum = MemberForum(
+            userName = username,
+            userId = userIdCounter,
+        )
+        userNameList.add(createMemberInForum)
         userIdCounter++
-        return userName
+        return createMemberInForum
+    }
+
+    fun createNewMessage(
+        authorId: Int,
+        message: String,
+    ): MessageForum{
+
+        val autorid = userNameList.find { it.userId == authorId }?: 0// честно скажу что подкапотную часть
+        // find прочитал поверхностно, слизал из вашего примера.
+
+        val message = MessageForum(
+            message = message,
+            authorId = autorid as Int,
+        )
+        messageList.add(message)
+        return message
+    }
+
+    fun printThread() {
+        for (i in 1 .. (messageList.size)){
+            println("автор : \n" +
+                    "сообщение : ${messageList[i]}")
     }
 
 }
+
 
 class MemberForum(
-    userName: String,
     userId: Int,
-) {
+    userName: String,
+){
+    var userId = userId
     var userName = userName
-    fun setUserName(userName: String) = apply {
-        this.userName = userName
+
+    fun setUserId (userId: Int) = apply {
+        this.userId = userId
     }
 
+    fun setUserName (userName: String) = apply {
+        this.userName = userName
+    }
 }
 
-class MessageForum(
-    autorId: Forum,
-    message: String,
-) {
+    class MessageForum(
+        authorId: Int,
+        message: String,
+    ) {
+    var authorId = authorId
     var message = message
-    fun setUserName(userName: String) = apply {
-        this.message = message
+
+        fun setAutorId(authorId: Int) = apply {
+            this.authorId = authorId
+        }
+
+        fun setMessage(message: String) = apply {
+            this.message = message
+        }
     }
 }
 
