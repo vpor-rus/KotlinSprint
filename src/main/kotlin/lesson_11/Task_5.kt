@@ -1,6 +1,7 @@
 package org.example.lesson_11
 
 import kotlin.collections.find
+import kotlin.io.println
 
 /*Реализовать класс работы форума (Forum). Для реализации создай дополнительные классы для сущностей
 “Член форума” (с полями userId и userName) и “Сообщение форума” (с полями authorId и message).
@@ -70,9 +71,10 @@ class Forum(
 
     fun printThread() {
         for (i in 0 until (messageList.size)) {
-            println(
-                "автор : \n" +
-                "сообщение : ${messageList[i]}"
+
+                println(
+                println("автор : \n" +
+                        "сообщение : ${messageList.toMutableList().forEach { i }}")
             )
         }
 
