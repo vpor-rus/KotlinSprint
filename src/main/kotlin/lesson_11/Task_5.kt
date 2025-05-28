@@ -74,7 +74,7 @@ class Forum(
 
                 println(
                 println("автор : \n" +
-                        "сообщение : ${messageList.toMutableList().forEach { i }}")
+                        "сообщение : ${messageList.toMutableList().forEach() }")
             )
         }
 
