@@ -22,47 +22,34 @@ fun main() {
     var monthDay = 30
     while (monthDay > 0) {
         monthWeather.newDayData(
-            Random.nextInt(280..310), Random.nextInt(260..285)
+            Random.nextInt(280..310), Random.nextInt(260..285), Random.nextBoolean()
         )
-        monthWeather.newPrecipitationData(Random.nextBoolean())
         monthDay--
     }
-monthWeather.dayTemperatureList.forEach { print("${it.dayTemperature} / ${it.nightTemperature} // ") }
+monthWeather.dayTemperatureList.forEach { print("${it.dayTemperature} / ${it.nightTemperature} // ${it.precipitation} /// ") }
 
 }
 
 class MonthWeather(
-    var dayTemperatureList: MutableList<OneDayTemperature> = mutableListOf(),
-
-    var precipitationList: MutableList<Precipitation> = mutableListOf(),
+    var dayTemperatureList: MutableList<OneDayWeather> = mutableListOf(),
 ) {
-
     fun newDayData(
         dayData: Int,
         nightData: Int,
-    ): OneDayTemperature {
-        val createNewDayData = OneDayTemperature(
+        precipitationData: Boolean,
+    ): OneDayWeather {
+        val createNewDayData = OneDayWeather(
             dayTemperature = dayData,
             nightTemperature = nightData,
+            precipitation = precipitationData,
         )
         dayTemperatureList.add(createNewDayData)
         return createNewDayData
     }
-
-
-    fun newPrecipitationData(
-        precipitationData: Boolean,
-    ): Precipitation {
-        val createNewPrecipitationData = Precipitation(precipitation = precipitationData)
-        precipitationList.add(createNewPrecipitationData)
-        return createNewPrecipitationData
-    }
-
 }
 
-class OneDayTemperature(
+class OneDayWeather(
     val dayTemperature: Int,
     val nightTemperature: Int,
+    val precipitation: Boolean,
 )
-
-class Precipitation(val precipitation: Boolean)
