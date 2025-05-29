@@ -71,11 +71,10 @@ class Forum(
 
     fun printThread() {
         for (i in 0 until (messageList.size)) {
-                    val editMessage = messageList.toMutableList().toString()
-                println(
-                println("автор : \n" +
-                        "сообщение : ${editMessage}")
-            )
+            messageList.forEach {
+                println("автор : ${it.toString()}\n" +
+                        "cooбщение : ${it.toString()}")
+            }
         }
 
     }
