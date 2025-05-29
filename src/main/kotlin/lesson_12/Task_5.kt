@@ -18,24 +18,51 @@ import kotlin.random.nextInt
 Выведи результаты в консоль.*/
 
 fun main() {
-    var monthTemperature = MonthWeather()
-    var dayTemperature = DayTemperature()
-    monthTemperature.dayTemperatureList.add(dayTemperature)
-    monthTemperature.dayTemperatureList.forEach { println(it) }
-}
-
-class MonthWeather(
-    var dayTemperatureList: MutableList<DayTemperature> = mutableListOf(),
-
-    ) {
-
-}
-
-class DayTemperature(){
-    var dayTemperature: Int =  Random.nextInt(280..315)
+    var monthWeather = MonthWeather()
+    var monthDay = 30
+    while (monthDay > 0) {
+        monthWeather.newDayData(
+            Random.nextInt(280..310), Random.nextInt(260..285)
+        )
+        monthWeather.newPrecipitationData(Random.nextBoolean())
+        monthDay--
     }
 
 
+}
+
+class MonthWeather(
+    var dayTemperatureList: MutableList<OneDayTemperature> = mutableListOf(),
+
+    var precipitationList: MutableList<Precipitation> = mutableListOf(),
+) {
+
+    fun newDayData(
+        dayData: Int,
+        nightData: Int,
+    ): OneDayTemperature {
+        val createNewDayData = OneDayTemperature(
+            dayTemperature = dayData,
+            nightTemperature = nightData,
+        )
+        dayTemperatureList.add(createNewDayData)
+        return createNewDayData
+    }
 
 
+    fun newPrecipitationData(
+        precipitationData: Boolean,
+    ): Precipitation {
+        val createNewPrecipitationData = Precipitation(precipitation = precipitationData)
+        precipitationList.add(createNewPrecipitationData)
+        return createNewPrecipitationData
+    }
 
+}
+
+class OneDayTemperature(
+    val dayTemperature: Int,
+    val nightTemperature: Int,
+)
+
+class Precipitation(val precipitation: Boolean)
