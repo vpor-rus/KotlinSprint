@@ -71,9 +71,9 @@ class Forum(
 
     fun printThread() {
         for (i in 0 until (messageList.size)) {
-            messageList.forEach {
-                println("автор : ${it.toString()}\n" +
-                        "cooбщение : ${it.toString()}")
+            messageList.forEachIndexed { index, forum ->
+                println("автор : $index\n" +
+                        "сообщение : $forum")
             }
         }
 
