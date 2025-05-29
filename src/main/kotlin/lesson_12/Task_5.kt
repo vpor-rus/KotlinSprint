@@ -1,6 +1,7 @@
 package org.example.lesson_12
 
 import kotlin.random.Random
+import kotlin.random.nextInt
 
 /*Продолжи усовершенствовать программу, теперь она должна рассчитывать средние значения температур
 и считать количество дней с осадками за месяц.
@@ -17,12 +18,15 @@ import kotlin.random.Random
 Выведи результаты в консоль.*/
 
 fun main() {
+    val inputData = InputData
 
 }
 
-class inputData(
-    val dayTemperature: Int = Random
-) {
+class InputData(
+    val dayTemperature: Int = Random.nextInt(260,310),
+    val nighTemperature: Int = Random.nextInt(255,295),
+    val precipitation: Boolean = Random.nextBoolean(),
+    {
 }
 
 }
