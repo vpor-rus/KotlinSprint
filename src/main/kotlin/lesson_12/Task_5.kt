@@ -18,18 +18,24 @@ import kotlin.random.nextInt
 Выведи результаты в консоль.*/
 
 fun main() {
-    val inputData = InputData
+    var monthTemperature = MonthWeather()
+    var dayTemperature = DayTemperature()
+    monthTemperature.dayTemperatureList.add(dayTemperature)
+    monthTemperature.dayTemperatureList.forEach { println(it) }
+}
+
+class MonthWeather(
+    var dayTemperatureList: MutableList<DayTemperature> = mutableListOf(),
+
+    ) {
 
 }
 
-class InputData(
-    val dayTemperature: Int = Random.nextInt(260,310),
-    val nighTemperature: Int = Random.nextInt(255,295),
-    val precipitation: Boolean = Random.nextBoolean(),
-    {
-}
+class DayTemperature(){
+    var dayTemperature: Int =  Random.nextInt(280..315)
+    }
 
-}
+
 
 
 
