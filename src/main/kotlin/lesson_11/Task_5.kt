@@ -62,17 +62,15 @@ class Forum(
 
         val autorid = authorId
 
-        val message = MessageForum(
-            message = message, authorId =autorid,
+        val message = message
         )
         messageList.add(message)
         return message
     }
 
     fun printThread() {
-            messageList.forEachIndexed { index, forum ->
-                println("автор : $index\n" +
-                        "сообщение : $forum")
+            messageList.forEach  {
+               // println("${it.autorId}: ${it.message}")
             }
     }
 }
