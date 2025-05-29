@@ -20,7 +20,9 @@ fun main() {
 
 }
 
-class diurnalWeather() {
+class inputData(
+    val dayTemperature: Int = Random
+) {
 }
 
 }
