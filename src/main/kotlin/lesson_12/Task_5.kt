@@ -27,7 +27,7 @@ fun main() {
         monthWeather.newPrecipitationData(Random.nextBoolean())
         monthDay--
     }
-
+monthWeather.dayTemperatureList.forEach { print("${it.dayTemperature} / ${it.nightTemperature} // ") }
 
 }
 
