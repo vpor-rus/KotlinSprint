@@ -63,7 +63,7 @@ class Forum(
         val autorid = authorId
 
         val message = message
-        )
+
         messageList.add(message)
         return message
     }
