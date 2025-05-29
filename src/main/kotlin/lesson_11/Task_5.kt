@@ -70,13 +70,10 @@ class Forum(
     }
 
     fun printThread() {
-        for (i in 0 until (messageList.size)) {
             messageList.forEachIndexed { index, forum ->
                 println("автор : $index\n" +
                         "сообщение : $forum")
             }
-        }
-
     }
 }
 
