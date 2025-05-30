@@ -23,19 +23,48 @@ fun main() {
 }
 
 class Forum(
-
+    var memberForum: MutableList<MemberForum> = mutableListOf(),
+    var messageList: MutableList<MessageForum> = mutableListOf(),
+    var counterId: Int = 1,
+    var autorId: Int,
 ) {
+
+    fun createNewMemberForum(
+        userNameDate: String,
+        userIdDate: Int,
+    ): MemberForum{
+        val newMemberForum = MemberForum(
+            userId = counterId,
+            userName = userIdDate,
+        )
+        memberForum.add(newMemberForum)
+        counterId++
+        return newMemberForum
+    }
+
+    fun createNewMessageForum(
+        autorIdDate: Int,
+        messageDate: String,
+    ): MessageForum{
+        val newMessageForum = MessageForum(
+            autorId = autorIdDate,
+            message = messageDate,
+        )
+        messageList.add(newMessageForum)
+        return newMessageForum
+    }
 
 }
 
 class MemberForum(
-
+    val userId: Int,
+    val userName: Int,
 )
 
 
 class MessageForum(
-    autorId: Forum,
-    message: String,
+    val autorId: Int,
+    val message: String,
 )
 
 
