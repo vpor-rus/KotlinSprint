@@ -15,10 +15,29 @@ fun main() {
 
 }
 
-
+class PhoneDirectorya(
+    var listAbonent: MutableList<PhoneDirectoryia> = mutableListOf()
+) {
+    fun newPhoneDirectoryia(
+        nameDate: String,
+        phoneNumberDate: String,
+        companiNameDate: String?,
+    ): PhoneDirectoryia {
+        val createNewPhoneDirectoryia = PhoneDirectoryia(
+            name = nameDate,
+            phoneNumber = phoneNumberDate.toLongOrNull(),
+            companiName = companiNameDate?: "null",
+        )
+        listAbonent.add(createNewPhoneDirectoryia)
+        return createNewPhoneDirectoryia
+    }
+    fun printThread() {
+        val editListAbonement =
+    }
+}
 
 class PhoneDirectoryia(
     val name: String,
-    val phoneNumber: Long,
+    val phoneNumber: Long?,
     val companiName: String?,
 )
