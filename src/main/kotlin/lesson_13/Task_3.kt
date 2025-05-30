@@ -35,8 +35,12 @@ fun main() {
     listAbonent.newPhoneDirectory(
         nameData = "Великий уравнитель",
         phoneNumberData = 3030,
-        compainNameDate = "Где-то на просторах"
+        compainNameDate = "null"
     )
+
+    val editListAbonentNameCompani = listAbonent.listAbonents.map { phoneDirectoriy -> phoneDirectoriy.companiName?: "<не указано>"}
+    print(editListAbonentNameCompani)
+
 }
 
 class ListAbonent(
@@ -61,8 +65,4 @@ class PhoneDirectoriy(
     val name: String,
     val phoneNumber: Long,
     val companiName: String?,
-) {
-    fun outputData() {
-        println(" Имя: $name\n Номер: $phoneNumber\n Компания: ${companiName?: "<не указано>"}")
-    }
-}
+)
