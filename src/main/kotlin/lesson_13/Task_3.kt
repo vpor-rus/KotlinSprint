@@ -18,4 +18,6 @@ class PhoneDirectoriya(
     val name: String,
     val phoneNumber: Long,
     val companiName: String?,
-)
+) {
+
+}
