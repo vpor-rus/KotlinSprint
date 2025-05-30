@@ -15,7 +15,7 @@ fun main() {
     val listAbonent = PhoneDirectoryaa()
     listAbonent.newPhoneDirectoryia(
         nameDate = "ниф-ниф",
-        phoneNumberDate = "9876543",
+        phoneNumberDate = "не успел купить",
         companiNameDate = "соломенный дом"
     )
     listAbonent.printThread()
@@ -31,7 +31,7 @@ class PhoneDirectoryaa(
     ): PhoneDirectoryiaa {
         val createNewPhoneDirectoryia = PhoneDirectoryiaa(
             name = nameDate,
-            phoneNumber = phoneNumberDate.toLongOrNull(),
+            phoneNumber = phoneNumberDate.toLong(),
             companiName = companiNameDate?: "<название не указано>",
         )
         listAbonent.add(createNewPhoneDirectoryia)
@@ -47,5 +47,5 @@ class PhoneDirectoryaa(
 
 class PhoneDirectoryiaa(
     val name: String,
-    val phoneNumber: Long?,
+    val phoneNumber: Long,
     val companiName: String?,)
