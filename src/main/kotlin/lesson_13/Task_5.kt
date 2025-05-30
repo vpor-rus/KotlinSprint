@@ -15,8 +15,8 @@ fun main() {
     val listAbonent = PhoneDirectoryaa()
     listAbonent.newPhoneDirectoryia(
         nameDate = "ниф-ниф",
-        phoneNumberDate = "не успел купить",
-        companiNameDate = "соломенный дом"
+        phoneNumberDate = "не указал свой номер",
+        companiNameDate = "соломенный дом",
     )
     listAbonent.printThread()
 }
@@ -31,7 +31,7 @@ class PhoneDirectoryaa(
     ): PhoneDirectoryiaa {
         val createNewPhoneDirectoryia = PhoneDirectoryiaa(
             name = nameDate,
-            phoneNumber = phoneNumberDate.toLong(),
+            phoneNumber = phoneNumberDate.toLongOrNull(),
             companiName = companiNameDate?: "<название не указано>",
         )
         listAbonent.add(createNewPhoneDirectoryia)
@@ -40,12 +40,12 @@ class PhoneDirectoryaa(
 
     fun printThread() {
         listAbonent.forEach {
-            println("имя: ${it.name}, номер телефона: ${it.phoneNumber}, название компании: ${it.companiName} ")
+            println("имя: ${it.name}, номер телефона: ${it.phoneNumber?: "введено недопустимое значение"}, название компании: ${it.companiName} ")
         }
     }
 }
 
 class PhoneDirectoryiaa(
     val name: String,
-    val phoneNumber: Long,
+    val phoneNumber: Long?,
     val companiName: String?,)
