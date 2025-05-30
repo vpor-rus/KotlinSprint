@@ -15,30 +15,30 @@ fun main() {
     listAbonent.newPhoneDirectory(
         nameData = "Кот Леопольд",
         phoneNumberData = 89046758090,
-        compainNameDate = null
+        compainNameData = null
     )
     listAbonent.newPhoneDirectory(
         nameData = "Ситх",
         phoneNumberData = 12345654321,
-        compainNameDate = "Sitkh and Co"
+        compainNameData = "Sitkh and Co"
     )
     listAbonent.newPhoneDirectory(
         nameData = "капитан Немо",
         phoneNumberData = 89000000000,
-        compainNameDate = null
+        compainNameData = null
     )
     listAbonent.newPhoneDirectory(
         nameData = "Клоун",
         phoneNumberData = 98765432109,
-        compainNameDate = "Цирк"
+        compainNameData = "Цирк"
     )
     listAbonent.newPhoneDirectory(
         nameData = "Великий уравнитель",
         phoneNumberData = 3030,
-        compainNameDate = "null"
+        compainNameData = "null"
     )
 
-    val editListAbonentNameCompani = listAbonent.listAbonents.map { phoneDirectoriy -> phoneDirectoriy.companiName?: "<не указано>"}
+    val editListAbonentNameCompani = listAbonent.listAbonents.mapNotNull { phoneDirectoriy -> phoneDirectoriy.companiName}
     print(editListAbonentNameCompani)
 
 }
@@ -49,12 +49,12 @@ class ListAbonent(
     fun newPhoneDirectory(
         nameData: String,
         phoneNumberData: Long,
-        compainNameDate: String?,
+        compainNameData: String?,
     ): PhoneDirectoriy{
         val createNewPhoneDirectoriy = PhoneDirectoriy(
             name = nameData,
             phoneNumber = phoneNumberData,
-            companiName = compainNameDate,
+            companiName = compainNameData,
         )
         listAbonents.add(createNewPhoneDirectoriy)
         return createNewPhoneDirectoriy
