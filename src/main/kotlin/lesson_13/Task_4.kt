@@ -24,7 +24,8 @@ val listAbonent = PhoneDirectorya()
         phoneNumberDate = "98765432",
         companiNameDate = "колхоз"
     )
-    listAbonent.printThread()
+
+        listAbonent.printThread()
 }
 
 class PhoneDirectorya(
@@ -38,20 +39,16 @@ class PhoneDirectorya(
         val createNewPhoneDirectoryia = PhoneDirectoryia(
             name = nameDate,
             phoneNumber = phoneNumberDate,
-            companiName = companiNameDate ?: "null",
+            companiName = companiNameDate?: "null",
         )
         listAbonent.add(createNewPhoneDirectoryia)
         return createNewPhoneDirectoryia
     }
 
     fun printThread() {
-        val editListAbonementNumber = mutableListOf(
-            (listAbonent.map { listAbonent -> listAbonent.name }),
-            (listAbonent.map { listAbonent -> listAbonent.phoneNumber }),
-            (listAbonent.map { listAbonent -> listAbonent.companiName })
-        )
-        print(editListAbonementNumber)
-
+        listAbonent.forEach {
+            println("имя: ${it.name}, номер телефона: ${it.phoneNumber.toLongOrNull()}, название компании: ${it.companiName} ")
+        }
     }
 }
 
