@@ -19,6 +19,24 @@ package org.example.lesson_11
 каждого пользователя.*/
 
 fun main() {
+val forum = Forum()
+    forum.createNewMemberForum(
+        userNameDate = "телепузик",
+        userIdDate = 1,
+    )
+    forum.createNewMemberForum(
+        userNameDate = "радиопузик",
+        userIdDate = 2,
+    )
+    forum.createNewMessageForum(
+        messageDate = "привет",
+        autorIdDate = 1
+    )
+    forum.createNewMessageForum(
+        messageDate = "пока",
+        autorIdDate = 2
+    )
+
 
 }
 
@@ -42,19 +60,19 @@ class Forum(
     }
 
     fun createNewMessageForum(
-        autorIdDate: Int,
         messageDate: String,
+        autorIdDate: Int,
     ): MessageForum{
         val newMessageForum = MessageForum(
-            autorId = autorIdDate,
             message = messageDate,
+            autorId = counterId
         )
         messageList.add(newMessageForum)
         return newMessageForum
     }
 
     fun printThread(){
-
+        messageList.forEach { print("автор : ${it.autorId} \n сообщение : ${it.message}") }
     }
 
 }
@@ -66,9 +84,11 @@ class MemberForum(
 
 
 class MessageForum(
-    val autorId: Int,
     val message: String,
-)
+    val autorId: Int,
+){
+
+}
 
 
 
