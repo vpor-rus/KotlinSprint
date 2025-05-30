@@ -19,7 +19,7 @@ import kotlin.random.nextInt
 
 fun main() {
     var monthWeather = MonthWeather()
-    var monthDay = 30
+    var monthDay = 30  //не выношу в константу, потому что можно поменять на нужное значение
     var preliminaryResultMonthWeather = mutableListOf<OneDayWeather>()
     while (monthDay > 0) {
         preliminaryResultMonthWeather.add(monthWeather.newDayData(
@@ -38,9 +38,9 @@ fun main() {
     val editDayAtPrecipitation = precipitationList.sum()
 
     print("Средняя дневная температура: ")
-    println("%02f".format(editDayTemperatureList - 275))
+    println("%02f".format(editDayTemperatureList - KELVIN_IN_KOTLIN))
     print("Средняя ночная температура: ")
-    println("%02f".format(editNightTemperatureList - 275))
+    println("%02f".format(editNightTemperatureList - KELVIN_IN_KOTLIN))
     print("Количество дней: $editDayAtPrecipitation")
 }
 
@@ -67,3 +67,5 @@ class OneDayWeather(
     val nightTemperature: Int,
     val precipitation: Int,
 )
+
+const val  KELVIN_IN_KOTLIN = 275
