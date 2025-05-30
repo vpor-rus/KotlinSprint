@@ -26,7 +26,6 @@ class Forum(
     var memberForum: MutableList<MemberForum> = mutableListOf(),
     var messageList: MutableList<MessageForum> = mutableListOf(),
     var counterId: Int = 1,
-    var autorId: Int,
 ) {
 
     fun createNewMemberForum(
@@ -52,6 +51,10 @@ class Forum(
         )
         messageList.add(newMessageForum)
         return newMessageForum
+    }
+
+    fun printThread(){
+
     }
 
 }
