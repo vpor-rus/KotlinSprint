@@ -20,10 +20,15 @@ fun main() {
         companiName = null,
     )
 
+    contact1.outputData()
 }
 
 class PhoneDirectori(
     val name: String,
     val phoneNumber: Long,
     val companiName: String?,
-)
+) {
+    fun outputData() {
+        println(" Имя: $name\n Номер: $phoneNumber\n Компания: ${companiName?: "<не указано>"}")
+    }
+}
