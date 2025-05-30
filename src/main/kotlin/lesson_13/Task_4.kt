@@ -15,7 +15,9 @@ fun main() {
 
 }
 
-class PhoneDirectoriy(
+
+
+class PhoneDirectoryia(
     val name: String,
     val phoneNumber: Long,
     val companiName: String?,
