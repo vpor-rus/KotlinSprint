@@ -22,8 +22,7 @@ fun main() {
 }
 
 class WeatherDailys(_dayTimeTemperature: Int, _nightTemperature: Int) {
-    val dayTimeTemperature = _dayTimeTemperature - KELVIN_TO_CELSIUM
-    var nightTemperature = _nightTemperature - KELVIN_TO_CELSIUM
+    val dayTimeTemperature = _dayTimeTemperature - 275
+    var nightTemperature = _nightTemperature - 275
 }
 
-const val KELVIN_TO_CELSIUM = 275
