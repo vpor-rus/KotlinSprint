@@ -13,3 +13,9 @@ package org.example.lesson_13
 fun main() {
 
 }
+
+class PhoneDirectoriya(
+    val name: String,
+    val phoneNumber: Long,
+    val companiName: String?,
+)
