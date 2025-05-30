@@ -12,7 +12,19 @@ package org.example.lesson_13
 Выведи созданные объекты в консоль методом класса.*/
 
 fun main() {
+val listAbonent = PhoneDirectorya()
+    listAbonent.newPhoneDirectoryia(
+        nameDate = "корова",
+        phoneNumberDate = "23456789",
+        companiNameDate = null,
+    )
 
+    listAbonent.newPhoneDirectoryia(
+        nameDate = "смурфик",
+        phoneNumberDate = "98765432",
+        companiNameDate = "колхоз"
+    )
+    listAbonent.printThread()
 }
 
 class PhoneDirectorya(
@@ -25,19 +37,26 @@ class PhoneDirectorya(
     ): PhoneDirectoryia {
         val createNewPhoneDirectoryia = PhoneDirectoryia(
             name = nameDate,
-            phoneNumber = phoneNumberDate.toLongOrNull(),
-            companiName = companiNameDate?: "null",
+            phoneNumber = phoneNumberDate,
+            companiName = companiNameDate ?: "null",
         )
         listAbonent.add(createNewPhoneDirectoryia)
         return createNewPhoneDirectoryia
     }
+
     fun printThread() {
-        val editListAbonement =
+        val editListAbonementNumber = mutableListOf(
+            (listAbonent.map { listAbonent -> listAbonent.name }),
+            (listAbonent.map { listAbonent -> listAbonent.phoneNumber }),
+            (listAbonent.map { listAbonent -> listAbonent.companiName })
+        )
+        print(editListAbonementNumber)
+
     }
 }
 
 class PhoneDirectoryia(
     val name: String,
-    val phoneNumber: Long?,
+    val phoneNumber: String,
     val companiName: String?,
 )
