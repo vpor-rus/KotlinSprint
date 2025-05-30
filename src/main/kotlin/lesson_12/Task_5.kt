@@ -20,30 +20,44 @@ import kotlin.random.nextInt
 fun main() {
     var monthWeather = MonthWeather()
     var monthDay = 30
+    var preliminaryResultMonthWeather = mutableListOf<OneDayWeather>()
     while (monthDay > 0) {
-        monthWeather.newDayData(
-            Random.nextInt(280..310), Random.nextInt(260..285), Random.nextBoolean()
-        )
+        preliminaryResultMonthWeather.add(monthWeather.newDayData(
+            dayData = Random.nextInt(280..310),
+            nightData = Random.nextInt(260..285),
+            precipitationData = Random.nextInt(0,2)))
         monthDay--
     }
-monthWeather.dayTemperatureList.forEach { print("${it.dayTemperature} / ${it.nightTemperature} // ${it.precipitation} /// ") }
+    val dayTemperatureList = preliminaryResultMonthWeather.map { oneDayWeather -> oneDayWeather.dayTemperature  }
+    val nightTemperatureList = preliminaryResultMonthWeather.map { oneDayWeather -> oneDayWeather.nightTemperature}
+    val precipitationList = preliminaryResultMonthWeather.map { oneDayWeather -> oneDayWeather.precipitation}
 
+    val editDayTemperatureList = dayTemperatureList.average()
+
+    val editNightTemperatureList = nightTemperatureList.average()
+    val editDayAtPrecipitation = precipitationList.sum()
+
+    print("Средняя дневная температура: ")
+    println("%02f".format(editDayTemperatureList - 275))
+    print("Средняя ночная температура: ")
+    println("%02f".format(editNightTemperatureList - 275))
+    print("Количество дней: $editDayAtPrecipitation")
 }
 
 class MonthWeather(
-    var dayTemperatureList: MutableList<OneDayWeather> = mutableListOf(),
+    var dayWeatherList: MutableList<OneDayWeather> = mutableListOf(),
 ) {
     fun newDayData(
         dayData: Int,
         nightData: Int,
-        precipitationData: Boolean,
+        precipitationData: Int,
     ): OneDayWeather {
         val createNewDayData = OneDayWeather(
             dayTemperature = dayData,
             nightTemperature = nightData,
             precipitation = precipitationData,
         )
-        dayTemperatureList.add(createNewDayData)
+        dayWeatherList.add(createNewDayData)
         return createNewDayData
     }
 }
@@ -51,5 +65,5 @@ class MonthWeather(
 class OneDayWeather(
     val dayTemperature: Int,
     val nightTemperature: Int,
-    val precipitation: Boolean,
+    val precipitation: Int,
 )
