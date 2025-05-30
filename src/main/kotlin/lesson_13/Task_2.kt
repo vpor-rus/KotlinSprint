@@ -14,7 +14,7 @@ package org.example.lesson_13
 Вместо null значения, в консоль должна выводиться строка <не указано>.*/
 
 fun main() {
-    val contact1 = PhoneDirectory(
+    val contact1 = PhoneDirectori(
         name = "Кузнечик",
         phoneNumber = 8924-198-76-54,
         companiName = null,
@@ -22,7 +22,7 @@ fun main() {
 
 }
 
-class PhoneDirectory(
+class PhoneDirectori(
     val name: String,
     val phoneNumber: Long,
     val companiName: String?,
