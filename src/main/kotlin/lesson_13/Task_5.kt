@@ -11,17 +11,22 @@ package org.example.lesson_13
 
 fun main() {
 
-    val phoneDirectoriy1 = PhoneDirectoriya("Кот Леопольд", "89046758090", null,)
+    val phoneDirectoriy1 = PhoneDirectoriya("Кот Леопольд", "89046758090", null)
     val phoneDirectoriy2 = PhoneDirectoriya("Ситх", "09№;%:?", "Sitkh and Co")
     val phoneDirectoriy3 = PhoneDirectoriya("Великий уравнитель", "отказываюсь сообщить номер", "null")
 
-    val listPhoneDirectoriya: MutableList<PhoneDirectoriya> = mutableListOf(phoneDirectoriy1, phoneDirectoriy2,
-      phoneDirectoriy3)
-
-    val listPhoneNumber = listPhoneDirectoriya.mapNotNull{ phoneDirectoriya -> phoneDirectoriya.phoneNumber.toLongOrNull() }
+    val listPhoneDirectoriya: MutableList<PhoneDirectoriya> = mutableListOf(
+        phoneDirectoriy1, phoneDirectoriy2, phoneDirectoriy3
+    )
+    val listPhoneNumber = listPhoneDirectoriya.map { phoneDirectoriya ->
+        try {
+            phoneDirectoriya.phoneNumber.toLong()
+        } catch (e: NumberFormatException) {
+            "номер телефона указан в недопустимом значении"
+        }
+    }
     println(listPhoneNumber)
 }
-
 class PhoneDirectoriya(
     val name: String,
     val phoneNumber: String,
