@@ -10,55 +10,18 @@ package org.example.lesson_13
 - выведи список всех существующих компаний, которые есть в телефонной книге.*/
 
 fun main() {
-    val listAbonent = ListAbonent()
 
-    listAbonent.newPhoneDirectory(
-        nameData = "Кот Леопольд",
-        phoneNumberData = 89046758090,
-        compainNameData = null
-    )
-    listAbonent.newPhoneDirectory(
-        nameData = "Ситх",
-        phoneNumberData = 12345654321,
-        compainNameData = "Sitkh and Co"
-    )
-    listAbonent.newPhoneDirectory(
-        nameData = "капитан Немо",
-        phoneNumberData = 89000000000,
-        compainNameData = null
-    )
-    listAbonent.newPhoneDirectory(
-        nameData = "Клоун",
-        phoneNumberData = 98765432109,
-        compainNameData = "Цирк"
-    )
-    listAbonent.newPhoneDirectory(
-        nameData = "Великий уравнитель",
-        phoneNumberData = 3030,
-        compainNameData = "null"
-    )
+    val listPhoneDirectoriy: MutableList<PhoneDirectoriy> = mutableListOf()
 
-    val editListAbonentNameCompani = listAbonent.listAbonents.mapNotNull { phoneDirectoriy -> phoneDirectoriy.companiName}
-    print(editListAbonentNameCompani)
+    val phoneDirectoriy1 = PhoneDirectoriy("Кот Леопольд", 89046758090, null,)
+    val phoneDirectoriy2 = PhoneDirectoriy("Ситх", 12345654321, "Sitkh and Co")
+    val phoneDirectoriy3 = PhoneDirectoriy("капитан Немо", 89000000000, null)
+    val phoneDirectoriy4 = PhoneDirectoriy("Клоун", 98765432109, "Цирк")
+    val phoneDirectoriy5 = PhoneDirectoriy("Великий уравнитель", 3030, "null")
 
-}
+    listPhoneDirectoriy.add(phoneDirectoriy1)
 
-class ListAbonent(
-    var listAbonents: MutableList<PhoneDirectoriy> = mutableListOf()
-) {
-    fun newPhoneDirectory(
-        nameData: String,
-        phoneNumberData: Long,
-        compainNameData: String?,
-    ): PhoneDirectoriy{
-        val createNewPhoneDirectoriy = PhoneDirectoriy(
-            name = nameData,
-            phoneNumber = phoneNumberData,
-            companiName = compainNameData,
-        )
-        listAbonents.add(createNewPhoneDirectoriy)
-        return createNewPhoneDirectoriy
-    }
+
 }
 
 class PhoneDirectoriy(
@@ -66,3 +29,5 @@ class PhoneDirectoriy(
     val phoneNumber: Long,
     val companiName: String?,
 )
+
+
