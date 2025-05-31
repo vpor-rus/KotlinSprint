@@ -1,7 +1,5 @@
 package org.example.lesson_13
 
-import kotlin.text.toLongOrNull
-
 /*Скопируй класс из предыдущей задачи (без логики заполнения телефонной книги) и измени его название
 для избегания конфликтов.
 
@@ -12,41 +10,20 @@ import kotlin.text.toLongOrNull
 и выведи ее название в консоль.*/
 
 fun main() {
-    val listAbonent = PhoneDirectoryaa()
-    listAbonent.newPhoneDirectoryia(
-        nameDate = "ниф-ниф",
-        phoneNumberDate = "не указал свой номер",
-        companiNameDate = null ,
-    )
-    listAbonent.printThread()
+
+    val phoneDirectoriy1 = PhoneDirectoriya("Кот Леопольд", "89046758090", null,)
+    val phoneDirectoriy2 = PhoneDirectoriya("Ситх", "09№;%:?", "Sitkh and Co")
+    val phoneDirectoriy3 = PhoneDirectoriya("Великий уравнитель", "отказываюсь сообщить номер", "null")
+
+    val listPhoneDirectoriya: MutableList<PhoneDirectoriya> = mutableListOf(phoneDirectoriy1, phoneDirectoriy2,
+      phoneDirectoriy3)
+
+    val listPhoneNumber = listPhoneDirectoriya.mapNotNull{ phoneDirectoriya -> phoneDirectoriya.phoneNumber.toLongOrNull() }
+    println(listPhoneNumber)
 }
 
-class PhoneDirectoryaa(
-    var listAbonent: MutableList<PhoneDirectoryiaa> = mutableListOf()
-) {
-    fun newPhoneDirectoryia(
-        nameDate: String,
-        phoneNumberDate: String,
-        companiNameDate: String?,
-    ): PhoneDirectoryiaa {
-        val createNewPhoneDirectoryia = PhoneDirectoryiaa(
-            name = nameDate,
-            phoneNumber = phoneNumberDate.toLongOrNull(),
-            companiName = companiNameDate
-        )
-        listAbonent.add(createNewPhoneDirectoryia)
-        return createNewPhoneDirectoryia
-    }
-
-    fun printThread() {
-        listAbonent.forEach {
-            println("имя: ${it.name}, номер телефона: ${it.phoneNumber?: "введено недопустимое значение"}," +
-                    " название компании: ${it.companiName?: "<название не указано>"} ")
-        }
-    }
-}
-
-class PhoneDirectoryiaa(
+class PhoneDirectoriya(
     val name: String,
-    val phoneNumber: Long?,
-    val companiName: String?,)
+    val phoneNumber: String,
+    val companiName: String?,
+)
