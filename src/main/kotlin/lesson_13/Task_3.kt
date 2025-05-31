@@ -11,7 +11,7 @@ package org.example.lesson_13
 
 fun main() {
 
-    val listPhoneDirectoriy: MutableList<PhoneDirectoriy> = mutableListOf()
+     mutableListOf()
 
     val phoneDirectoriy1 = PhoneDirectoriy("Кот Леопольд", 89046758090, null,)
     val phoneDirectoriy2 = PhoneDirectoriy("Ситх", 12345654321, "Sitkh and Co")
@@ -19,9 +19,9 @@ fun main() {
     val phoneDirectoriy4 = PhoneDirectoriy("Клоун", 98765432109, "Цирк")
     val phoneDirectoriy5 = PhoneDirectoriy("Великий уравнитель", 3030, "null")
 
-    listPhoneDirectoriy.add(phoneDirectoriy1)
-
-
+    val listPhoneDirectoriy: MutableList<PhoneDirectoriy> = mutableListOf(phoneDirectoriy1, phoneDirectoriy2,
+                                                        phoneDirectoriy3, phoneDirectoriy4, phoneDirectoriy4)
+    listPhoneDirectoriy.forEach {  }
 }
 
 class PhoneDirectoriy(
