@@ -11,8 +11,6 @@ package org.example.lesson_13
 
 fun main() {
 
-     mutableListOf()
-
     val phoneDirectoriy1 = PhoneDirectoriy("Кот Леопольд", 89046758090, null,)
     val phoneDirectoriy2 = PhoneDirectoriy("Ситх", 12345654321, "Sitkh and Co")
     val phoneDirectoriy3 = PhoneDirectoriy("капитан Немо", 89000000000, null)
@@ -20,8 +18,10 @@ fun main() {
     val phoneDirectoriy5 = PhoneDirectoriy("Великий уравнитель", 3030, "null")
 
     val listPhoneDirectoriy: MutableList<PhoneDirectoriy> = mutableListOf(phoneDirectoriy1, phoneDirectoriy2,
-                                                        phoneDirectoriy3, phoneDirectoriy4, phoneDirectoriy4)
-    listPhoneDirectoriy.forEach {  }
+                                                        phoneDirectoriy3, phoneDirectoriy4, phoneDirectoriy5)
+
+    val listCompaniName = listPhoneDirectoriy.mapNotNull{ phoneDirectoriy -> phoneDirectoriy.companiName }
+    print(listCompaniName)
 }
 
 class PhoneDirectoriy(
