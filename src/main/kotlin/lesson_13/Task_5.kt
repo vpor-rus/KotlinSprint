@@ -22,7 +22,7 @@ fun main() {
         try {
             phoneDirectoriya.phoneNumber.toLong()
         } catch (e: NumberFormatException) {
-            "номер телефона указан в недопустимом значении"
+            "пользователь указал номер телефона в недопустимом значении"
         }
     }
     println(listPhoneNumber)
