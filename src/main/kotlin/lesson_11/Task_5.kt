@@ -19,7 +19,7 @@ package org.example.lesson_11
 каждого пользователя.*/
 
 fun main() {
-val forum = Forum()
+    val forum = Forum()
     forum.createNewMemberForum(
         userNameDate = "телепузик",
         userIdDate = 1,
@@ -29,14 +29,12 @@ val forum = Forum()
         userIdDate = 2,
     )
     forum.createNewMessageForum(
-        messageDate = "привет",
-        autorIdDate = 1
+        messageDate = "привет", autorIdDate = 1
     )
     forum.createNewMessageForum(
-        messageDate = "пока",
-        autorIdDate = 2
+        messageDate = "пока", autorIdDate = 2
     )
-
+    forum.printThread()
 
 }
 
@@ -47,12 +45,13 @@ class Forum(
 ) {
 
     fun createNewMemberForum(
-        userNameDate: String,
         userIdDate: Int,
-    ): MemberForum{
+        userNameDate: String,
+
+    ): MemberForum {
         val newMemberForum = MemberForum(
             userId = counterId,
-            userName = userIdDate,
+            userName = userNameDate,
         )
         memberForum.add(newMemberForum)
         counterId++
@@ -60,35 +59,35 @@ class Forum(
     }
 
     fun createNewMessageForum(
-        messageDate: String,
         autorIdDate: Int,
-    ): MessageForum{
-        val newMessageForum = MessageForum(
-            message = messageDate,
-            autorId = counterId
-        )
+        messageDate: String,
+    ): MessageForum? {
+        val memberExist = memberForum.any { it.userId == autorIdDate }
+        return if (memberExist) {
+            val newMessageForum = MessageForum(
+                message = messageDate, autorId = autorIdDate,
+            )
         messageList.add(newMessageForum)
-        return newMessageForum
+        newMessageForum
+        } else {
+            println("Автора с ID $autorIdDate не существует")
+            null
+        }
     }
 
-    fun printThread(){
-        messageList.forEach { print("автор : ${it.autorId} \n сообщение : ${it.message}") }
+    fun printThread() {
+        messageList.forEach { print(" автор : ${it.autorId} \n сообщение : ${it.message}\n") }
     }
 
 }
 
 class MemberForum(
     val userId: Int,
-    val userName: Int,
+    val userName: String,
 )
 
 
 class MessageForum(
     val message: String,
     val autorId: Int,
-){
-
-}
-
-
-
+)
