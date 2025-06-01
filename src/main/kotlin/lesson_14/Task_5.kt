@@ -22,13 +22,18 @@ fun main() {
 abstract class Chat(
     val class messagList: MutableList<Message> = mutableListOf<>()
 ) {
-    abstract fun addMessage(
-
-    )
-    abstract fun addTreadMessage()
+    abstract fun addMessage(): Message
+    abstract fun addTreadMessage(): ChildMessage
+    abstract fun printChat()
 }
 
-class Message(
+open class Message(
     autorMessage: String,
     message: String,
+)
+
+class ChildMessage(
+    autorMessage: String,
+    message: String,
+    parentId: Int,
 )
