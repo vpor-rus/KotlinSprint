@@ -35,8 +35,8 @@ class ChatRealisation: Chat() {
         val parentMessage = messageList.find { it.id == parentMessageId}
         return  if (parentMessage != null) {
             val newChildMessage = ChildMessage(
-                autorMessage = autorMessage,
-                message = message,
+                autor = autorMessage,
+                text = message,
                 id = parentMessageId,
                 parentId = getNextId(),
             )
@@ -45,6 +45,14 @@ class ChatRealisation: Chat() {
         } else {
             println("Сообщения с ID ${parentMessageId} нет")
             null
+        }
+    }
+
+    override fun printChat() {
+        for (message in  messageList) {
+            if (message is ChildMessage) {
+
+            }
         }
     }
 }
@@ -58,19 +66,19 @@ abstract class Chat(
 }
 
 open class Message(
-    autorMessage: String,
-    message: String,
+    autor: String,
+    text: String,
     val id: Int,
 ) {
     var parentMessageId: Int? = null
 }
 
 class ChildMessage(
-    autorMessage: String,
-    message: String,
+    autor: String,
+    text: String,
     id: Int,
     parentId: Int,
-): Message(autorMessage, message, id,){
+): Message(autor, text, id,){
     init {
         parentMessageId = parentId
     }
