@@ -21,65 +21,38 @@ fun main() {
 }
 
 class ChatRealisation: Chat() {
-    fun getNextId(): Int {
+    fun getNextId(): Int{
         return messageList.size + 1
     }
 
-    override fun addMessage(message: String, autorMessage: String,): Message {
-        val newMessage = Message(autorMessage, message, id = getNextId(),)
+    override fun addMessage(message: String, autorMessage: String): Message {
+        val newMessage = Message(message, autorMessage, getNextId())
         messageList.add(newMessage)
-        return newMessage //добавление нового сообщения через building
+        return newMessage
     }
 
-    override fun addTreadMessage(message: String, autorMessage: String, parentMessageId: Int): ChildMessage? {
-        val parentMessage = messageList.find { it.id == parentMessageId}
-        return  if (parentMessage != null) {
-            val newChildMessage = ChildMessage(
-                autor = autorMessage,
-                text = message,
-                id = parentMessageId,
-                parentId = getNextId(),
-            )
-            messageList.add(newChildMessage)
-            newChildMessage
-        } else {
-            println("Сообщения с ID ${parentMessageId} нет")
-            null
-        }
-    }
-
-    override fun printChat() {
-        for (message in  messageList) {
-            if (message is ChildMessage) {
-
-            }
-        }
+    override fun addThreadMessage(message: String, autorMessage: String, parentId: Int): ChildMessage? {
+        val parentMessage = messageList.find { it.id == parentId }
+        return //дописать когда прочитаю про find
     }
 }
+
+
 
 abstract class Chat(
-    var messageList: MutableList<Message> = mutableListOf()
+  val messageList: MutableList<Message> = mutableListOf()
 ) {
-    abstract fun addMessage(): Message
-    abstract fun addTreadMessage(): ChildMessage?
-    abstract fun printChat()
+    abstract fun addMessage(message: String, autorMessage: String): Message
+    abstract fun addThreadMessage(message: String, autorMessage: String, parentId: Int): ChildMessage?
+    abstract fun printChat(){}
 }
 
-open class Message(
-    autor: String,
-    text: String,
-    val id: Int,
-) {
-    var parentMessageId: Int? = null
+ open class Message(val text: String, autor: String, val id: Int) {
+    var parentMassegeId: Int? = null
 }
 
-class ChildMessage(
-    autor: String,
-    text: String,
-    id: Int,
-    parentId: Int,
-): Message(autor, text, id,){
+class ChildMessage(text: String, autor: String, id: Int, parentId: Int){
     init {
-        parentMessageId = parentId
+        var parentNessageId = parentId
     }
 }
