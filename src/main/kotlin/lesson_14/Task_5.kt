@@ -30,6 +30,23 @@ class ChatRealisation: Chat() {
         messageList.add(newMessage)
         return newMessage //добавление нового сообщения через building
     }
+
+    override fun addTreadMessage(message: String, autorMessage: String, parentMessageId: Int): ChildMessage? {
+        val parentMessage = messageList.find { it.id == parentMessageId}
+        return  if (parentMessage != null) {
+            val newChildMessage = ChildMessage(
+                autorMessage = autorMessage,
+                message = message,
+                id = parentMessageId,
+                parentId = getNextId(),
+            )
+            messageList.add(newChildMessage)
+            newChildMessage
+        } else {
+            println("Сообщения с ID ${parentMessageId} нет")
+            null
+        }
+    }
 }
 
 abstract class Chat(
@@ -45,7 +62,7 @@ open class Message(
     message: String,
     val id: Int,
 ) {
-    var parentMessagId: Int? = null
+    var parentMessageId: Int? = null
 }
 
 class ChildMessage(
@@ -55,6 +72,6 @@ class ChildMessage(
     parentId: Int,
 ): Message(autorMessage, message, id,){
     init {
-        parentMessagId = parentId
+        parentMessageId = parentId
     }
 }
