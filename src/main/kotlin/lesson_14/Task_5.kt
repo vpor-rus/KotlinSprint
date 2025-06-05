@@ -15,13 +15,15 @@ package org.example.lesson_14
 табуляцию и печатать его под родительским сообщением. Используй groupBy() для группировки сообщений
 по parentMessageId, если сообщение является экземпляром ChildMessage, или по id если это обычное сообщение*/
 
+// Если бы не было AndroidSprintMentorAll эту задачу я бы не сделал никогда
+//
 
 fun main() {
     val chat = ChatRealisation()
     val message1 = chat.addMessage("Привет", "Колобок")
     val message2 = chat. addMessage("пока", "Лиса")
 
-    chat.addThreadMessage("Конец сказик","Волк", message2.id)
+    chat.addThreadMessage("Конец сказки","Волк", message2.id)
 }
 
 class ChatRealisation: Chat() {
@@ -39,15 +41,12 @@ class ChatRealisation: Chat() {
         val parentMessage = messageList.find { it.id == parentId }
         return if(parentMessage != null) {
             val newChildMessage = ChildMessage(
-                text = message,
-                autor = autorMessage,
-                id = getNextId(),
-                parentId = parentId
+                message, autorMessage, getNextId(), parentId
             )
             messageList.add(newChildMessage)
             newChildMessage
         } else {
-            println("Сщщбщения с ID $parentId нет")
+            println("Сообщения с ID $parentId нет")
             null
         }
     }
