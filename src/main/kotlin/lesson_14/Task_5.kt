@@ -17,7 +17,11 @@ package org.example.lesson_14
 
 
 fun main() {
+    val chat = ChatRealisation()
+    val message1 = chat.addMessage("Привет", "Колобок")
+    val message2 = chat. addMessage("пока", "Лиса")
 
+    chat.addThreadMessage("Конец сказик","Волк", message2.id)
 }
 
 class ChatRealisation: Chat() {
@@ -33,7 +37,29 @@ class ChatRealisation: Chat() {
 
     override fun addThreadMessage(message: String, autorMessage: String, parentId: Int): ChildMessage? {
         val parentMessage = messageList.find { it.id == parentId }
-        return //дописать когда прочитаю про find
+        return if(parentMessage != null) {
+            val newChildMessage = ChildMessage(
+                text = message,
+                autor = autorMessage,
+                id = getNextId(),
+                parentId = parentId
+            )
+            messageList.add(newChildMessage)
+            newChildMessage
+        } else {
+            println("Сщщбщения с ID $parentId нет")
+            null
+        }
+    }
+
+    override fun printChat() {
+        for (message in messageList) {
+            if (message is ChildMessage) {
+                println("\t[${message.id}] ответ на ${message.parentMassegeId}: ${message.text}")
+            } else {
+                println("[${message.id}]: ${message.text}")
+            }
+        }
     }
 }
 
