@@ -15,6 +15,7 @@ val duck = Duck()
 carp.swimmingSameLevel()
 duck.boardingFromWater()
 seagul.lift()
+duck.dive()
 }
 
 interface FloatingCreature {
