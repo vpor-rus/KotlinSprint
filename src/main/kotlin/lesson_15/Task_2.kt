@@ -14,6 +14,31 @@ package org.example.lesson_15
 Создай по одному объекту для разных типов погодных данных и протестируй работу программы.*/
 
 fun main() {
+    val temperatureData = Temperature(25)
+    val precipitation = PrecipitationAmount(10.5)
+    val weatherServer = WeatherServer()
+    weatherServer.sentData(temperatureData)
+    weatherServer.sentData(precipitation)
+}
+abstract class WeatherStationStats() {
+    abstract fun getData(): String
+}
 
+class Temperature(val temperature: Int): WeatherStationStats() {
+    override fun getData(): String {
+        return "Температура $temperature"
+    }
+}
+
+class PrecipitationAmount(val amount: Double): WeatherStationStats(){
+    override fun getData(): String {
+        return "Осадки $amount"
+    }
+}
+
+class WeatherServer{
+    fun sentData(weatherData: WeatherStationStats){
+        println(weatherData.getData())
+    }
 }
 
