@@ -19,25 +19,26 @@ package org.example.lesson_14
 //
 
 fun main() {
-    val chat = ChatRealisation()
+    val chat = Chat()
     val message1 = chat.addMessage("Привет", "Колобок")
     val message2 = chat. addMessage("пока", "Лиса")
 
     chat.addThreadMessage("Конец сказки","Волк", message2.id)
 }
 
-class ChatRealisation: Chat() {
+class Chat() {
+    val messageList: MutableList<Message> = mutableListOf()
     fun getNextId(): Int{
         return messageList.size + 1
     }
 
-    override fun addMessage(message: String, autorMessage: String): Message {
+    fun addMessage(message: String, autorMessage: String): Message {
         val newMessage = Message(message, autorMessage, getNextId())
         messageList.add(newMessage)
         return newMessage
     }
 
-    override fun addThreadMessage(message: String, autorMessage: String, parentId: Int): ChildMessage? {
+    fun addThreadMessage(message: String, autorMessage: String, parentId: Int): ChildMessage? {
         val parentMessage = messageList.find { it.id == parentId }
         return if(parentMessage != null) {
             val newChildMessage = ChildMessage(
@@ -51,7 +52,7 @@ class ChatRealisation: Chat() {
         }
     }
 
-    override fun printChat() {
+    fun printChat() {
         for (message in messageList) {
             if (message is ChildMessage) {
                 println("\t[${message.id}] ответ на ${message.parentMassegeId}: ${message.text}")
@@ -62,22 +63,12 @@ class ChatRealisation: Chat() {
     }
 }
 
-
-
-abstract class Chat(
-  val messageList: MutableList<Message> = mutableListOf()
-) {
-    abstract fun addMessage(message: String, autorMessage: String): Message
-    abstract fun addThreadMessage(message: String, autorMessage: String, parentId: Int): ChildMessage?
-    abstract fun printChat(){}
-}
-
  open class Message(val text: String, autor: String, val id: Int) {
     var parentMassegeId: Int? = null
 }
 
 class ChildMessage(text: String, autor: String, id: Int, parentId: Int){
     init {
-        var parentNessageId = parentId
+        var parentMessageId = parentId
     }
 }
