@@ -15,9 +15,6 @@ package org.example.lesson_14
 табуляцию и печатать его под родительским сообщением. Используй groupBy() для группировки сообщений
 по parentMessageId, если сообщение является экземпляром ChildMessage, или по id если это обычное сообщение*/
 
-// Если бы не было AndroidSprintMentorAll эту задачу я бы не сделал никогда
-//
-
 fun main() {
     val chat = Chat()
     val message1 = chat.addMessage("Привет", "Колобок")
