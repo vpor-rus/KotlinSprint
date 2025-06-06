@@ -18,10 +18,10 @@ seagul.lift()
 }
 
 interface FloatingCreature {
-    fun diving()
+    fun dive()
     fun ascent()
     fun swimmingSameLevel()
-    fun turning()
+    fun turne()
 }
 
 interface FlyingCreature {
@@ -32,7 +32,7 @@ interface FlyingCreature {
 }
 
 class Carp: FloatingCreature{
-    override fun diving() {
+    override fun dive() {
         println("сжать плавательный пузырь")
     }
 
@@ -44,7 +44,7 @@ class Carp: FloatingCreature{
         println("махать плавниками")
     }
 
-    override fun turning() {
+    override fun turne() {
         println("не махать плавниками на стороне поворота")
     }
 }
@@ -63,7 +63,7 @@ class Seagul: FlyingCreature {
     }
 }
 
-class Duck: FlyingCreature {
+class Duck: FlyingCreature, FloatingCreature {
     override fun takeOffFromGround() {
         println("частый взмах крыльями")
     }
@@ -74,5 +74,21 @@ class Duck: FlyingCreature {
 
     override fun lift() {
         println("частый взмах крыльями")
+    }
+
+    override fun dive() {
+        println("сложить крылья и нырнуть")
+    }
+
+    override fun ascent() {
+        println("Под водой поднять голову вверх и грести ногами")
+    }
+
+    override fun swimmingSameLevel() {
+        println("Грести лапами в нужную сторону")
+    }
+
+    override fun turne() {
+        TODO("Not yet implemented")
     }
 }
