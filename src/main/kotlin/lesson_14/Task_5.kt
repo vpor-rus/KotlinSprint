@@ -15,6 +15,7 @@ package org.example.lesson_14
 табуляцию и печатать его под родительским сообщением. Используй groupBy() для группировки сообщений
 по parentMessageId, если сообщение является экземпляром ChildMessage, или по id если это обычное сообщение*/
 
+/*
 fun main() {
     val chat = Chat()
     val message1 = chat.addMessage("Привет", "Колобок")
@@ -37,8 +38,8 @@ class Chat() {
 
     fun addThreadMessage(message: String, autorMessage: String, parentId: Int): ChildMessage? {
         val parentMessage = messageList.find { it.id == parentId }
-        return if(parentMessage != null) {
-            val newChildMessage = ChildMessage(
+        return (if (parentMessage != null) {
+            val newChildMessage: ChildMessage = ChildMessage(
                 message, autorMessage, getNextId(), parentId
             )
             messageList.add(newChildMessage)
@@ -46,7 +47,7 @@ class Chat() {
         } else {
             println("Сообщения с ID $parentId нет")
             null
-        }
+        }) as ChildMessage?
     }
 
     fun printChat() {
@@ -68,4 +69,4 @@ class ChildMessage(text: String, autor: String, id: Int, parentId: Int){
     init {
         var parentMessageId = parentId
     }
-}
+}*/
