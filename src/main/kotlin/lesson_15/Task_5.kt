@@ -14,8 +14,33 @@ package org.example.lesson_15
 Спроектируй классы и несколько объектов. Вызови их методы, «перевезя» таким образом 6 человек и 2 тонны груза.*/
 
 fun main() {
-    val lada1 = PasangerClass(2)
-    lada1.peopleLoading()
+val kamaz1 = CargoAutomobile()
+    kamaz1.peopleLoading(1)
+    kamaz1.cargoLoading(2.0)
+    kamaz1.startMoving()
+    kamaz1.manevrCar()
+    kamaz1.stopCar()
+    kamaz1.peopleUnloading(1)
+    kamaz1.cargoLoading(2.0)
+
+    println()
+
+val volga1 = PasangerAutomobile()
+    volga1.peopleLoading(3)
+    volga1.startMoving()
+    volga1.manevrCar()
+    volga1.stopCar()
+    volga1.peopleUnloading(3)
+    volga1.startMoving()
+    volga1.manevrCar()
+    volga1.stopCar()
+    volga1.peopleLoading(2)
+    volga1.startMoving()
+    volga1.manevrCar()
+    volga1.stopCar()
+    volga1.peopleUnloading(2)
+
+
 }
 
 interface MovementCar {
@@ -23,7 +48,7 @@ interface MovementCar {
         println("Машину завели, включили нужную скорость, отпустили стояночный тормоз")
     }
 
-    fun manevringCar() {
+    fun manevrCar() {
         println("Машина движется к конечной точке, НЕ НАРУШАЯ ПДД!")
     }
 
@@ -34,82 +59,104 @@ interface MovementCar {
 }
 
 interface CargoTransportation {
-    fun cargoLoading()
-    fun cargoUnloading()
+    fun cargoLoading(weight: Double)
+    fun cargoUnloading(weight: Double)
 }
 
 interface PeoplesTransportation {
-    fun peopleLoading()
-    fun peopleUnloading()
+    fun peopleLoading(number: Int)
+    fun peopleUnloading(number: Int)
 }
 
-class PasangerClass(numberPasanger: Int) : PeoplesTransportation, MovementCar {
-    override fun peopleLoading(numberPasanger: Int) {
-        if (numberPasanger < 3) {
-            println("В машине есть еще место")
+class PasangerAutomobile : PeoplesTransportation, MovementCar {
+    private var passangerInCar = 0
+    private val maxPassangerInCar = 3
+
+
+    override fun peopleLoading(passangerOnAreOff: Int) {
+        if (passangerOnAreOff + passangerInCar < maxPassangerInCar) {
+            passangerInCar += passangerOnAreOff
+            println("В машине $passangerInCar людей")
         } else {
-            println("Места в машине больше нет")
+            println("Подсадка невозможна, нет мест")
         }
     }
 
-    override fun peopleUnloading(numberPasanger: Int) {
-        if (numberPasanger > 0) {
-            println("в машине остались люди")
+    override fun peopleUnloading(passangerOnAreOff: Int) {
+        if (passangerInCar >= passangerOnAreOff) {
+            passangerInCar -= passangerOnAreOff
+            println("В машине осталось $passangerInCar пассажиров")
         } else {
-            println("машина пуста")
+            println("Такого количества пассажиров в машине нет.")
         }
 
     }
-
     override fun startMoving() {
-        println("Машину завели, включили нужную скорость, отпустили стояночный тормоз")
+        super.startMoving()
     }
 
-    override fun manevringCar() {
-        println("Машина движется к конечной точке, НЕ НАРУШАЯ ПДД!")
+    override fun manevrCar() {
+        super.manevrCar()
     }
 
     override fun stopCar() {
-        println("Нажали тормоз до остановки, выключили скорость, заглушили двигатель")
+        super.stopCar()
     }
 }
 
-class CargoAutomobile(numberPasanger: Int, cargoWeight: Int) : PeoplesTransportation, CargoTransportation, MovementCar {
-    override fun peopleLoading(numberPasanger: Int) {
-        if (numberPasanger < 1) {
-            println("В машине есть еще место")
+class CargoAutomobile : PeoplesTransportation, CargoTransportation,
+    MovementCar {
+        private var passangerInCar  = 0
+        private val maxPassangerInCar = 1
+        private var cargoInCar = 0.0
+        private val maxCargoInCar = 2.0
+    override fun peopleLoading(numberPasangerOnOrOff: Int) {
+        if (passangerInCar + numberPasangerOnOrOff <= 1) {
+            passangerInCar += numberPasangerOnOrOff
+            println("в машине $passangerInCar человек")
         } else {
             println("Места в машине больше нет")
         }
     }
 
-    override fun peopleUnloading(numberPasanger: Int) {
-        if (numberPasanger > 0) {
-            println("в машине остались люди")
+    override fun peopleUnloading(numberPasangerOnOrOff: Int) {
+        if (numberPasangerOnOrOff <= passangerInCar) {
+            passangerInCar -= numberPasangerOnOrOff
+            println("в машине осталось $passangerInCar человек")
+
         } else {
             println("машина пуста")
         }
 
     }
 
-    override fun cargoLoading() {
-        TODO("Not yet implemented")
+    override fun cargoLoading(cargoOnAreOff: Double) {
+        if (cargoOnAreOff + cargoInCar <= maxCargoInCar) {
+            cargoInCar += cargoOnAreOff
+            println("В машине $cargoInCar тон груза")
+        } else {
+            println("загружен полностью")
+        }
     }
 
-    override fun cargoUnloading() {
-        TODO("Not yet implemented")
+    override fun cargoUnloading(cargoOnAreOff: Double) {
+        if (cargoOnAreOff <= maxCargoInCar) {
+            cargoInCar -= cargoOnAreOff
+            println("В машине $cargoInCar тон груза")
+        } else {
+            println("столько груза в машине нет.")
+        }
     }
 
     override fun startMoving() {
-        TODO("Not yet implemented")
+        super.startMoving()
     }
 
-    override fun manevringCar() {
-        TODO("Not yet implemented")
+    override fun manevrCar() {
+        super.manevrCar()
     }
 
-    fun stopCar() {}
-
-
+    override fun stopCar() {
+        super.stopCar()
+    }
 }
-
