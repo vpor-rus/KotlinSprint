@@ -17,6 +17,9 @@ class OnlineOrder(
     private val numberOrder: Int,
     var orderIsReady: Boolean = false,
     ) {
+    init {
+        println("Создан заказ $numberOrder, пока не готов ")
+    }
     fun requestManager() {
         orderIsReady = true
         println("Заказ $numberOrder готов")
