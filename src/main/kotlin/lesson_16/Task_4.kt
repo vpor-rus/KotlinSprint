@@ -10,18 +10,22 @@ package org.example.lesson_16
 
 fun main() {
     val myOrder = OnlineOrder(1234)
-    myOrder.requestManager()
+    myOrder.requestManager("Приготовлено")
 }
 
 class OnlineOrder(
     private val numberOrder: Int,
-    var orderIsReady: Boolean = false,
+    private var orderIsReady: Boolean = false,
     ) {
     init {
-        println("Создан заказ $numberOrder, пока не готов ")
+        println("Создан заказ $numberOrder")
     }
-    fun requestManager() {
-        orderIsReady = true
-        println("Заказ $numberOrder готов")
+    fun requestManager(newStatus: String) {
+        if (!orderIsReady) {
+            orderIsReady = true
+            println("Статус заказа $numberOrder изменен на $newStatus")
+        } else {"Заказ готов"}
     }
+
+
 }
