@@ -9,10 +9,10 @@ package org.example.lesson_17
 
 fun main() {
 val blackHugar = Ship("BlackHugar", 23, "Tartuga")
-    blackHugar.name = "NeverChange"
+    blackHugar.mutableName = "NeverChange"
 }
 
-private class Ship(val name: String, var mediumSpeed: Int, var homePort: String,) {
+private class Ship(name: String, var mediumSpeed: Int, var homePort: String,) {
     var mutableName: String = name
         set(value) {
            field = print("Нельзя изменить имя корабля").toString()
