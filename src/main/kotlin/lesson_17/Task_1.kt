@@ -8,8 +8,8 @@ package org.example.lesson_17
 
 fun main() {
     val qwizle = Victorina()
-    qwizle.question
-    qwizle.answer
+    println(qwizle.question)
+    println(qwizle.answer)
 }
 
 private class Victorina {
