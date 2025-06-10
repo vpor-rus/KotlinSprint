@@ -10,7 +10,7 @@ package org.example.lesson_16
 
 fun main() {
     val myOrder = OnlineOrder(1234)
-    myOrder.requestManager("Приготовлено")
+    myOrder.managerProcessing("Наконец-то готов")
 }
 
 class OnlineOrder(
@@ -20,12 +20,15 @@ class OnlineOrder(
     init {
         println("Создан заказ $numberOrder")
     }
-    fun requestManager(newStatus: String) {
-        if (!orderIsReady) {
-            orderIsReady = true
-            println("Статус заказа $numberOrder изменен на $newStatus")
-        } else {"Заказ готов"}
+
+    private fun changeStatus(newStatus: String) {
+        orderIsReady = true
     }
 
-
+    fun managerProcessing(newStatus: String) {
+        if (!orderIsReady) {
+            changeStatus(newStatus)
+            println("Статус заказа изменен на $newStatus")
+        } else {println("Статус заказа \"готов\", изменение невозможно")}
+    }
 }
