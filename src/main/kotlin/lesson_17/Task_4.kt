@@ -10,7 +10,21 @@ package org.example.lesson_17
 При реализации использовать сеттер.*/
 
 fun main() {
-
+val package1 = PostalPackage(987, "Москва")
+    package1.location = "Иркутск"
+    package1.location = "Путятина"
+    println(package1.counter)
 }
 
-private
+private class PostalPackage(val number: Int, _location: String) {
+    var counter = 1
+    private var nextLocation = _location
+    var location: String
+        get() = nextLocation
+        set(value) {
+            if (nextLocation != value){
+                nextLocation = value
+                counter++
+            }
+        }
+}
