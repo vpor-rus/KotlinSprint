@@ -10,7 +10,7 @@ package org.example.lesson_17
 
 Создай экземпляр “скрытой” папки. Протестируй попытку чтения ее данных.*/
 
-fun main() {
+/*fun main() {
 val packageWork = Package("Рабочая", 23, true)
     packageWork.folderName = "Фотки с отпуска"
 }
@@ -23,7 +23,7 @@ private class Package(private val _name: String, private val _numberFails: Int, 
     var : Int
         get() = if (_flagSecret) println("скрытая папка")
         else _numberFails
-}
+}*/
 
 
 
