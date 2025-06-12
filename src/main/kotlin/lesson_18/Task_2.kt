@@ -22,13 +22,13 @@ fun main() {
     val gameList: List<CubeInGame> = listOf(cube4, cube6, cube8)
 
     for (cube in gameList) {
-        cube.rollOfDice()
+        cube.roll()
     }
 }
 
 open class CubeInGame(val faces: Int) {
 
-    open fun rollOfDice() {
+    open fun roll() {
         val result = Random.nextInt(1, faces + 1)
         println("При броске кубика с количеством граней $faces результат равен $result")
     }
