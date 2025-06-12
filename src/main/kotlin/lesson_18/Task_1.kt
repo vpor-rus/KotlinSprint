@@ -19,7 +19,7 @@ fun main() {
 
     internetOrder.addBuy(1, "Гавайка")
     println(internetOrder)
-    internetOrder.addBuys(2, mutableListOf("Гарпун", "Ласты"))
+    internetOrder.addBuy(2, mutableListOf("Гарпун", "Ласты"))
     println(internetOrder)
 }
 
@@ -31,7 +31,7 @@ private class InternetOrder {
         println("Заказан товар: $nameBuy")
     }
 
-    fun addBuys(
+    fun addBuy(
         number: Int,
         namesBuy: MutableList<String>,
     ) {
