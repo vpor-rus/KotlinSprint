@@ -22,15 +22,21 @@ fun main() {
     }
 }
 
-open class Tamagochy(val name: String) {
+abstract class Tamagochy{
+    abstract val name: String
     open fun animalEat() {
         when (name) {
             "лиса" -> println("Лиса ест ягоды")
             "собака" -> println("собака ест кости")
             "кошка" -> println("кошка ест рыбу")
-            else -> println("такого тамагочи нет в производстве")
+            else -> sleep()
         }
     }
+
+    open fun sleep() {
+        println("животное спит")
+    }
+
 }
 
 class Fox : Tamagochy("лиса")
