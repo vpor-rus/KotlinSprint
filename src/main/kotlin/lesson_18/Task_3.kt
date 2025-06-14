@@ -11,9 +11,9 @@ package org.example.lesson_18
 – в цикле вызывай метод приема пищи для каждого экземпляра.*/
 
 fun main() {
-    val fox = Fox()
-    val dog = Dog()
-    val cat = Cat()
+    val fox = Fox("Лиса")
+    val dog = Dog("Собака")
+    val cat = Cat("Кошка")
 
     val listTamagichy: List<Tamagochy> = listOf(fox, dog, cat)
 
@@ -22,27 +22,27 @@ fun main() {
     }
 }
 
-abstract class Tamagochy{
+abstract class Tamagochy(val name: String){
     abstract fun animalEat()
 
-    open fun sleep() {
-        println("животное спит")
+    fun sleep() {
+        println("$name спит")
     }
 
 }
 
-class Fox : Tamagochy() {
+class Fox (name: String): Tamagochy(name) {
     override fun animalEat() {
-        println("Лиса ест ягоды")
+        println("$name ест ягоды")
     }
 }
-class Dog : Tamagochy() {
+class Dog (name: String) : Tamagochy(name) {
     override fun animalEat() {
         println("собака ест кости")
     }
 }
-class Cat : Tamagochy() {
+class Cat(name: String) : Tamagochy(name) {
     override fun animalEat() {
-        println("кошка ест рыбу")
+        println("$name ест рыбу")
     }
     }
