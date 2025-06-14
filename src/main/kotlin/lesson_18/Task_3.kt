@@ -23,15 +23,7 @@ fun main() {
 }
 
 abstract class Tamagochy{
-    abstract val name: String
-    open fun animalEat() {
-        when (name) {
-            "лиса" -> println("Лиса ест ягоды")
-            "собака" -> println("собака ест кости")
-            "кошка" -> println("кошка ест рыбу")
-            else -> sleep()
-        }
-    }
+    abstract fun animalEat()
 
     open fun sleep() {
         println("животное спит")
@@ -39,6 +31,18 @@ abstract class Tamagochy{
 
 }
 
-class Fox : Tamagochy("лиса")
-class Dog : Tamagochy("собака")
-class Cat : Tamagochy("кошка")
+class Fox : Tamagochy() {
+    override fun animalEat() {
+        println("Лиса ест ягоды")
+    }
+}
+class Dog : Tamagochy() {
+    override fun animalEat() {
+        println("собака ест кости")
+    }
+}
+class Cat : Tamagochy() {
+    override fun animalEat() {
+        println("кошка ест рыбу")
+    }
+    }
