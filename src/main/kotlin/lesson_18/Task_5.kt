@@ -12,4 +12,6 @@ fun main() {
 
 }
 
-abstract class Shape
+abstract class Shape {
+    abstract fun canvas()
+}
