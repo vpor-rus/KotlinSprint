@@ -6,7 +6,8 @@ package org.example.lesson_19
 
 fun main() {
     println("Для своего аквариума вы можете выбрать: ")
-for (i in Fish.values())println(i)
+val listFish: List<Fish> = Fish.entries
+    println(listFish)
 }
 
 enum class Fish{
