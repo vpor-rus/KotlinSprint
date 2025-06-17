@@ -6,13 +6,10 @@ package org.example.lesson_19
 
 fun main() {
     println("Для своего аквариума вы можете выбрать: ")
-val listFish: List<Fish> = Fish.entries
+    val listFish: List<Fish> = Fish.entries
     println(listFish)
 }
 
-enum class Fish{
-    GUPPY,
-    ANGELFISH,
-    GOLDFISH,
-    SIAMESE_FIGHTING_FISH,
+enum class Fish {
+    GUPPY, ANGELFISH, GOLDFISH, SIAMESE_FIGHTING_FISH,
 }
