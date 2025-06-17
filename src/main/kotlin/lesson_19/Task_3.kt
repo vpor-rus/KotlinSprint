@@ -8,18 +8,24 @@ package org.example.lesson_19
 о дополнительной логике. Другой метод должен вызывать падение программы с ошибкой NotImplementedError.*/
 
 fun main() {
+    val spaceShip = SpaceShip("Восток")
 
+    spaceShip.takeOf()
+    spaceShip.land()
+    spaceShip.shootBackFromAsteroid()
 }
 
 private class SpaceShip(val name: String,) {
+
     fun takeOf() {
-        TODO("finish writing how it take off")
+        //TODO("finish writing how it take off")
+
     }
-    fun landing() {
-        TODO()
+    fun land() {
+        //TODO("реализовать посадку")
     }
 
-    fun shootBackFromAsteroid(): Nothing {
-    throw NotImplementedError
+    fun shootBackFromAsteroid(): Unit {
+    throw NotImplementedError("метод стрельбы не реализован")
     }
 }
