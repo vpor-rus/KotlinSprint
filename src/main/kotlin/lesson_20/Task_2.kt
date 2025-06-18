@@ -15,7 +15,6 @@ fun main() {
     val healingToMax: (Gamer) -> Unit = { player1.healthLevel = player1.maxHealth }
 
     println(player1)
-
 }
 
 private data class Gamer(
