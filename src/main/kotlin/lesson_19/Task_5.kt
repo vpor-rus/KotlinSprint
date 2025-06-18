@@ -10,15 +10,17 @@ package org.example.lesson_19
 
 fun main() {
     println("Введите имя и пол.\n Имя в строковом формате. \n Пол вводится латиницой заглавными буквами(MAN/WOMAN)")
-    val fileCabinet = FileCabinet(mutableListOf())
+    val listIdentity = mutableListOf<Identity>()
 
-    repeat(5) { index ->
-        println("введите имя и пол пользователя №${index + 1}: ")
-        val input = readln()?.trim() ?: ""
+    var count = 1
+
+    while (count <= 5) {
+        println("введите имя и пол пользователя №$count: ")
+        val input = readln().trim()
         val parts = input.split(" ")
         if (parts.size != 2) {
             println("Неправильно ввели данные")
-            return@repeat
+            continue
         }
         val name = parts[0]
         val sexInput = parts[1].uppercase()
@@ -26,19 +28,16 @@ fun main() {
         val sex = try {
             Sex.valueOf(sexInput)
         } catch (e: IllegalArgumentException) {
-            println("неверный формат, введите MAN или WOMEN")
-            return@repeat
+            println("неверный формат, введите MAN или WOMAN")
+            continue
         }
-        fileCabinet.listIdentity.add(Identity(name, sex))
+        listIdentity.add(Identity(name, sex))
+        count++
     }
 
     println("вывожу список людей: ")
-    fileCabinet.listIdentity.forEach { identity -> println("имя: ${identity.name}\nпол: ${identity.sex}") }
+    listIdentity.forEach { identity -> println("имя: ${identity.name}\nпол: ${identity.sex}") }
 }
-
-private class FileCabinet(
-    val listIdentity: MutableList<Identity>,
-)
 
 private class Identity(
     val name: String,
