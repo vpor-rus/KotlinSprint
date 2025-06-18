@@ -9,7 +9,11 @@ package org.example.lesson_20
 
 fun main() {
     val  listManyString = listOf<String>(
-        "первая строка", "вторая строка", "третья строка", "четвертая строка", "пятая строка"
+        "нулевая строка", "первая строка", "вторая строка", "третья строка", "четвертая строка", "пятая строка"
     )
+    val enumerationList: List<() -> Unit> = listManyString.map{element -> {println("нажат элемент [$element]")}}
 
+    for (index in enumerationList.indices step 2) {
+        enumerationList[index]()
+    }
 }
