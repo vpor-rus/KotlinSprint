@@ -12,13 +12,13 @@ package org.example.lesson_20
 fun main() {
 
     val player1 = Gamer("первый игрок", 33)
-     val healingToMax: (Gamer) -> Unit = {player1.healthLevel = player1.maxHealth}
+    val healingToMax: (Gamer) -> Unit = { player1.healthLevel = player1.maxHealth }
 
     println(player1)
 
 }
 
-private data class Gamer (
+private data class Gamer(
     val name: String,
     var healthLevel: Int,
     val maxHealth: Int = 100,
