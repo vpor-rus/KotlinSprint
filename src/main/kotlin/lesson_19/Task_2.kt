@@ -24,7 +24,7 @@ enum class ProductCategory() {
      OFFICE_SUPPLIES,
      MISCELLANEOUS;
 
-    fun nameToDispalay(): String =
+    fun getDisplayName(): String =
         when(this) {
             CLOTHING -> "одежда"
             OFFICE_SUPPLIES -> "канцелярские товары"
@@ -35,9 +35,9 @@ enum class ProductCategory() {
 private class Product(
     val name: String,
     val id: Int,
-    val categories: ProductCategory,
+    val category: ProductCategory,
 ) {
     fun printProperties() {
-        println("представляем вам $name находится в товарах категории ${categories.nameToDispalay()} ячейке $id")
+        println("представляем вам $name находится в товарах категории ${category.getDisplayName()} ячейке $id")
     }
 }
