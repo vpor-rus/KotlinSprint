@@ -12,18 +12,39 @@ fun main() {
     println("Введите имя и пол.\n Имя в строковом формате. \n Пол вводится латиницой заглавными буквами(MAN/WOMAN)")
     val fileCabinet = FileCabinet(mutableListOf())
 
+    repeat(5) { index ->
+        println("введите имя и пол пользователя №${index + 1}: ")
+        val input = readln()?.trim() ?: ""
+        val parts = input.split(" ")
+        if (parts.size != 2) {
+            println("Неправильно ввели данные")
+            return@repeat
+        }
+        val name = parts[0]
+        val sexInput = parts[1].uppercase()
+
+        val sex = try {
+            Sex.valueOf(sexInput)
+        } catch (e: IllegalArgumentException) {
+            println("неверный формат, введите MAN или WOMEN")
+            return@repeat
+        }
+        fileCabinet.listIdentity.add(Identity(name, sex))
+    }
+
+    println("вывожу список людей: ")
+    fileCabinet.listIdentity.forEach { identity -> println("имя: ${identity.name}\nпол: ${identity.sex}") }
 }
 
 private class FileCabinet(
-    listIdentity: MutableList<Identity>,
+    val listIdentity: MutableList<Identity>,
 )
 
 private class Identity(
-    name: String,
-    sex: Sex,
+    val name: String,
+    val sex: Sex,
 )
 
 enum class Sex {
-    MAN,
-    WOMAN,
+    MAN, WOMAN,
 }
