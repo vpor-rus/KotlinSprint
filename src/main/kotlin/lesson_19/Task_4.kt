@@ -32,7 +32,7 @@ private class Tank{
     }
 
     fun shot() {
-        val damage = cartridgeInChamber?.damageLevel()
+        val damage = cartridgeInChamber?.damage
         if (damage != null) {
         println("ВЫСТРЕЛ! нанесен урон $damage")
         cartridgeInChamber = null
@@ -40,14 +40,8 @@ private class Tank{
     }
 }
 
-enum class Ammunition {
-    BLUE,
-    GREEN,
-    RED;
-
-    fun damageLevel(): Int = when(this) {
-        BLUE -> 5
-        GREEN -> 10
-        RED -> 20
-    }
+enum class Ammunition(val damage: Int) {
+    BLUE(5),
+    GREEN(10),
+    RED(20),
 }
