@@ -10,8 +10,10 @@ package org.example.lesson_20
 fun main() {
     val player2 = Player("второй игрок", false)
 
-    val openTheDoor: (Player) -> String = { player -> if (player.presenceOfKey) "дверь открыта"
-    else "нет ключа, дверь закрыта"}
+    val openTheDoor: (Player) -> String = { player ->
+        if (player.presenceOfKey) "дверь открыта"
+        else "нет ключа, дверь закрыта"
+    }
 
     println(openTheDoor(player2))
     player2.presenceOfKey = true
