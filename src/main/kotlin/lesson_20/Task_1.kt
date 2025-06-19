@@ -8,8 +8,10 @@ package org.example.lesson_20
 fun main() {
     val nameUser = readln()
 
-    val gritingsUser = {println("С наступающим Новым Годом, $nameUser")};
+    val gritingsUser:(String) -> Unit = {println("С наступающим Новым Годом, $nameUser")};
 
     gritingsUser(nameUser)
 
 }
+
+
