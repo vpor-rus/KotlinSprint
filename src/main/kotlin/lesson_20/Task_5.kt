@@ -15,3 +15,8 @@ package org.example.lesson_20
 fun main() {
 
 }
+
+enum class PhraseRobot(val phrase: String){
+    TRUTH("Все что угодно, кроме бессмертия, - бесполезная трата времени."),
+
+}
