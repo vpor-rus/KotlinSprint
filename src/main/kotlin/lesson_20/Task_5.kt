@@ -14,9 +14,29 @@ package org.example.lesson_20
 
 fun main() {
 
+    val bender = Robot("Bender")
+
+    bender.say()
+}
+
+private class Robot(name: String){
+    private var modifier: ((String) -> String)? = null
+
+    fun say() {
+        val phrase = PhraseRobot.values().random().phrase
+        val output = modifier?.invoke(phrase) ?: phrase
+        println(output)
+    }
+
+    fun setModifer(mod: (String) -> String) {
+        modifier = mod
+    }
 }
 
 enum class PhraseRobot(val phrase: String){
     TRUTH("Все что угодно, кроме бессмертия, - бесполезная трата времени."),
-
+    LAZINESS("На помощь! Я слишком ленив чтобы спасаться"),
+    JOY("Знаешь что меня подбадривает? Издевательство над чужими неудачами"),
+    BETRAYAL("Не бейте меня!.. Я предам кого угодно"),
+    SHAME("Мне так стыдно! Хочу, чтобы все умерли"),
 }
