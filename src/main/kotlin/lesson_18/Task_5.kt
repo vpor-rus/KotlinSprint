@@ -4,73 +4,63 @@ package org.example.lesson_18
 В приложении есть экран, на котором можно рисовать различные фигуры, указывая координаты (x, y).
 Фигурами могут быть круг, квадрат и точка. Координаты могут быть представлены типами данных Int и Float.
 
-Создайте класс Screen, который будет содержать методы draw для рисования каждой фигуры с координатами
-типов Int и Float. Каждый метод должен возвращать строку, указывающую, какая фигура нарисована и в
-каких координатах. Используйте перегрузку методов для реализации.*/
+Создайте класс Screen, который будет содержать методы draw для рисования каждой фигуры с
+координатами типов Int и Float. Каждый метод должен возвращать строку, указывающую, какая фигура нарисована
+ и в каких координатах. Используйте перегрузку методов для реализации.*/
 
-fun main() {
-    val shape1 = Screen()
-    shape1.draw(1, 2, 3, 4, 5, 6)
+/*fun main() {
+
 }
+class DrawingView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
 
-class Screen {
-    fun draw(
-        x: Int,
-        y: Int,
-        radius: Int,
-    ) {
-        println("Центр круга находится на координате $x и $y, вокруг центра рисуется окружность с радиусом $radius")
+    private val paint = Paint().apply {
+        color = Color.BLUE
+        style = Paint.Style.STROKE
+        strokeWidth = 5f
     }
 
-    fun draw(
-        x: Float,
-        y: Float,
-        radius: Float,
-    ) {
-        println("Центр круга находится на координате $x и $y, вокруг центра рисуется окружность с радиусом $radius")
+    private val rectangles = mutableListOf<RectF>()
+    private var currentRect: RectF? = null
+
+    private var startX = 0f
+    private var startY = 0f
+
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+
+        // Рисуем уже сохранённые прямоугольники
+        for (rect in rectangles) {
+            canvas.drawRect(rect, paint)
+        }
+
+        // Рисуем текущий прямоугольник (если есть)
+        currentRect?.let { canvas.drawRect(it, paint) }
     }
 
-    fun draw(
-        x: Int,
-        y: Int,
-        top: Int,
-        left: Int,
-        right: Int,
-        bottom: Int,
-    ) {
-        println(
-            "Центр четырехугольника(точка пересечения диагоналей) располагается на координате $x и $y" +
-            " вокруг строится четырехугольник с левой стороной равной $left, верхней равной $top, " +
-            " правой равной $right, нижней равной $bottom"
-        )
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                startX = event.x
+                startY = event.y
+                currentRect = RectF(startX, startY, startX, startY)
+                invalidate()
+                return true
+            }
+            MotionEvent.ACTION_MOVE -> {
+                currentRect?.apply {
+                    right = event.x
+                    bottom = event.y
+                }
+                invalidate()
+                return true
+            }
+            MotionEvent.ACTION_UP -> {
+                currentRect?.let { rectangles.add(it) }
+                currentRect = null
+                invalidate()
+                return true
+            }
+        }
+        return super.onTouchEvent(event)
     }
-
-    fun draw(
-        x: Float,
-        y: Float,
-        top: Float,
-        left: Float,
-        right: Float,
-        bottom: Float,
-    ) {
-        println(
-            "Центр четырехугольника(точка пересечения диагоналей) располагается на координате $x и $y" +
-                    " вокруг строится четырехугольник с левой стороной равной $left, верхней равной $top, " +
-                    " правой равной $right, нижней равной $bottom"
-        )
-    }
-
-    fun draw(
-        x: Int,
-        y: Int,
-    ) {
-        println("на коорлинате $x и $y рисуется точка")
-    }
-
-    fun draw(
-        x: Float,
-        y: Float,
-    ) {
-        println("на коорлинате $x и $y рисуется точка")
-    }
-}
+} */
