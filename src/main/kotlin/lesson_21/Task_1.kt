@@ -5,7 +5,7 @@ package org.example.lesson_21
 Назови функцию vowelCount. Например, для строки "hello" функция должна вернуть 2.*/
 
 fun main() {
-val hello = "hello"
+    val hello = "hello"
     println(hello.voweCount())
 }
 
