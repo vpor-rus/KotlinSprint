@@ -10,6 +10,6 @@ fun main() {
 }
 
 fun List<Int>.evenNumbersSum(): Long {
-    return this.filter{it % 2 == 0}.map { it.toLong()}.sum()
+    return this.filter { it % 2 == 0 }.map { it.toLong() }.sum()
 
 }
