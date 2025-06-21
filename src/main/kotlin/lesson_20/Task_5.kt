@@ -17,6 +17,10 @@ fun main() {
     val bender = Robot("Bender")
 
     bender.say()
+
+    bender.setModifer { phrase -> phrase.split(" ").reversed().joinToString(" ") }
+
+    bender.say()
 }
 
 private class Robot(name: String){
