@@ -10,12 +10,12 @@ package org.example.lesson_20
 – Создай экземпляр игрока с неполным здоровьем, примени к нему созданную лямбду-функцию.*/
 
 fun main() {
-
     val player1 = Gamer("первый игрок", 33)
-    val healingToMax: (Gamer) -> Unit = { player1.healthLevel = player1.maxHealth }
 
-    println(player1)
-
+    println(player1.healthLevel)
+    val healtingToMax: (Gamer) -> Unit = { player -> player.healthLevel = player.maxHealth }
+    healtingToMax(player1)
+    println(player1.healthLevel)
 }
 
 private data class Gamer(
